@@ -1,25 +1,33 @@
 package com.lemon.wanandroid.Main
 
 import androidx.activity.viewModels
-import androidx.lifecycle.SavedStateViewModelFactory
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
+import androidx.savedstate.SavedStateRegistryOwner
 import com.lemon.wanandroid.BaseActivity
+import com.lemon.wanandroid.bean.User
 
 /**
  * Created by wxk on 2019/11/29.
  */
 class MainActivity : BaseActivity(){
+    // UserProfileFragment
+    private val viewModel:MainViewModel by viewModels(
+        factoryProducer = {
+            SavedStateViewModelFactory(application,this)
+        }
+    )
     override fun getContentViewId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO()
     }
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        viewModel.user.observe(this,
+            Observer<User> {
+                it.name
+            })
     }
 
     override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }
