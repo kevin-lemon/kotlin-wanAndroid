@@ -1,13 +1,9 @@
-package com.example.hepan.adaptation;
-
-/**
- * Created by hepan on 2018/5/25.
- */
+package com.lemon.wanandroid.Utils;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-
+//dimens适配生成器
 public class GenerateDimen {
 
     public static void genDimen() {

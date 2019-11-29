@@ -7,7 +7,7 @@ import com.lemon.wanandroid.BaseActivity
 import com.lemon.wanandroid.bean.User
 
 /**
- * Created by wxk on 2019/11/29.
+ * Created by Lemon on 2019/11/29.
  */
 class MainActivity : BaseActivity(){
     // UserProfileFragment

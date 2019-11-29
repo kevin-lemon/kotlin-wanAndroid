@@ -6,7 +6,7 @@ import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 
 /**
- * Created by wxk on 2019/11/29.
+ * Created by Lemon on 2019/11/29.
  */
 abstract class BaseActivity : AppCompatActivity(){
     protected lateinit var mContext: Context

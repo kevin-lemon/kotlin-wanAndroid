@@ -1,7 +1,7 @@
 package com.lemon.wanandroid
 
 /**
- * Created by wxk on 2019/11/29.
+ * Created by Lemon on 2019/11/29.
  */
  class SplashActivity : BaseActivity(){
     override fun getContentViewId(): Int {
