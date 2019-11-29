@@ -1,5 +1,6 @@
 package com.lemon.wanandroid.Main
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.lemon.wanandroid.bean.User
@@ -11,5 +12,5 @@ import java.util.*
 class MainViewModel(savedStateHandle: SavedStateHandle):ViewModel(){
 
     val userId: String = savedStateHandle["uid"]?:throw IllegalArgumentException("missing user id")
-    val user : User = TODO()
+    val user : LiveData<User> = TODO()
 }
