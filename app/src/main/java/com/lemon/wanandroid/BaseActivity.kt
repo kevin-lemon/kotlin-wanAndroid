@@ -2,7 +2,6 @@ package com.lemon.wanandroid
 
 import android.content.Context
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 
 /**
@@ -11,11 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 abstract class BaseActivity : AppCompatActivity(){
     protected lateinit var mContext: Context
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(getContentViewId())
         mContext = this
         initView()
+        initData()
     }
 
     abstract fun getContentViewId():Int

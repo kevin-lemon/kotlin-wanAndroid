@@ -5,7 +5,7 @@ package com.lemon.wanandroid
  */
  class SplashActivity : BaseActivity(){
     override fun getContentViewId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return R.layout.activity_main
     }
 
     override fun initView() {

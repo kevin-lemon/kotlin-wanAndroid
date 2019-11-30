@@ -1,10 +1,12 @@
 package com.lemon.wanandroid.Main
 
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.*
-import androidx.savedstate.SavedStateRegistryOwner
 import com.lemon.wanandroid.BaseActivity
+import com.lemon.wanandroid.R
 import com.lemon.wanandroid.bean.User
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Created by Lemon on 2019/11/29.
@@ -17,17 +19,20 @@ class MainActivity : BaseActivity(){
         }
     )
     override fun getContentViewId(): Int {
-        TODO()
+        return R.layout.activity_main
     }
 
     override fun initView() {
         viewModel.user.observe(this,
             Observer<User> {
-                it.name
+                Name.text = it.name
             })
     }
 
     override fun initData() {
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
 }
