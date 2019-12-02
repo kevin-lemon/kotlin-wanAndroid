@@ -1,5 +1,6 @@
 package com.lemon.wanandroid.Main
 
+import android.app.Application
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.*
@@ -12,7 +13,6 @@ import kotlinx.android.synthetic.main.activity_main.*
  * Created by Lemon on 2019/11/29.
  */
 class MainActivity : BaseActivity(){
-    // UserProfileFragment
     private val viewModel:MainViewModel by viewModels(
         factoryProducer = {
             SavedStateViewModelFactory(application,this)
