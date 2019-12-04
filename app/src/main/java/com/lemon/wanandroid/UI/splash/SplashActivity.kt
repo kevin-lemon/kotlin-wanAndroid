@@ -1,4 +1,7 @@
-package com.lemon.wanandroid
+package com.lemon.wanandroid.UI.splash
+
+import com.lemon.wanandroid.BaseActivity
+import com.lemon.wanandroid.R
 
 /**
  * Created by Lemon on 2019/11/29.

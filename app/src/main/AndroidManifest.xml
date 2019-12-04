@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity"
+            android:name=".UI.splash.SplashActivity"
             android:launchMode="singleTop" />
         <activity
-            android:name=".Main.MainActivity"
+            android:name=".UI.main.MainActivity"
             android:theme="@style/FullScreenStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

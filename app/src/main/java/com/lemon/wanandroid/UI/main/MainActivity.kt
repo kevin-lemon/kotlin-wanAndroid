@@ -1,7 +1,5 @@
-package com.lemon.wanandroid.Main
+package com.lemon.wanandroid.UI.main
 
-import android.app.Application
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.*
 import com.lemon.wanandroid.BaseActivity
@@ -13,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  * Created by Lemon on 2019/11/29.
  */
 class MainActivity : BaseActivity(){
-    private val viewModel:MainViewModel by viewModels(
+    private val viewModel: MainViewModel by viewModels(
         factoryProducer = {
             SavedStateViewModelFactory(application,this)
         }
@@ -25,7 +23,7 @@ class MainActivity : BaseActivity(){
     override fun initView() {
         viewModel.user.observe(this,
             Observer<User> {
-                Name.text = it.name
+                name.text = it.name
             })
     }
 
