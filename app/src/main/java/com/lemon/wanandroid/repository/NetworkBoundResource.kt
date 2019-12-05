@@ -1,10 +1,10 @@
 package com.lemon.wanandroid.repository
 
-import Resource
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import com.lemon.wanandroid.bean.Resource
 
 /**
  * Created by wxk on 2019/12/4.

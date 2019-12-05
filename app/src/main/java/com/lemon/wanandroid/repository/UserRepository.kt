@@ -1,9 +1,9 @@
 package com.lemon.wanandroid.repository
 
-import Resource
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.lemon.wanandroid.bean.Resource
 import com.lemon.wanandroid.bean.User
 
 /**
