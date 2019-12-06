@@ -1,11 +1,20 @@
-package com.lemon.wanandroid.UI.main
+package com.lemon.wanandroid.ui.main
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import com.lemon.wanandroid.BaseActivity
 import com.lemon.wanandroid.R
-import com.lemon.wanandroid.bean.User
+import com.lemon.wanandroid.repository.HomeRepository
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Created by Lemon on 2019/11/29.
@@ -21,13 +30,13 @@ class MainActivity : BaseActivity(){
     }
 
     override fun initView() {
-        viewModel.user.observe(this,
-            Observer<User> {
-                name.text = it.name
-            })
+        button2.setOnClickListener {
+                HomeRepository().getArticle("0")
+        }
     }
 
     override fun initData() {
+
     }
 
     override fun onResume() {

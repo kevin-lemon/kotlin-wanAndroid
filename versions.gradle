@@ -109,6 +109,7 @@ deps.glide = glide
 def retrofit = [:]
 retrofit.retrofit2 =  "com.squareup.retrofit2:retrofit:$versions.retrofit"
 retrofit.converter_gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 deps.retrofit = retrofit
 
 def dagger = [:]

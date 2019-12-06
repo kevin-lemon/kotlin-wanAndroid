@@ -1,4 +1,4 @@
-package com.lemon.wanandroid.UI.splash
+package com.lemon.wanandroid.ui.splash
 
 import com.lemon.wanandroid.BaseActivity
 import com.lemon.wanandroid.R

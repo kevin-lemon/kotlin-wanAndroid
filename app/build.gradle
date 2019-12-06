@@ -47,6 +47,7 @@ dependencies {
     implementation deps.kotlin.kotlinx_coroutines
     implementation deps.retrofit.retrofit2
     implementation deps.retrofit.converter_gson
+    implementation deps.retrofit.runtime
     implementation deps.okhttp3
     implementation deps.constraint_layout
     implementation deps.support.fragment_ktx
@@ -58,6 +59,7 @@ dependencies {
     implementation deps.lifecycle.extensions
     implementation deps.lifecycle.viewmodel_ktx
     implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.java8
     implementation deps.lifecycle.reactivestreams_ktx
     //dagger
     implementation deps.dagger.runtime
