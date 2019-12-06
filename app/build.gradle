@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-
+//无需open自动open类
+apply plugin: 'kotlin-allopen'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -58,8 +59,12 @@ dependencies {
     implementation deps.lifecycle.viewmodel_ktx
     implementation deps.lifecycle.runtime
     implementation deps.lifecycle.reactivestreams_ktx
-
-    implementation deps.navigation.frgment_ktx
+    //dagger
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android
+    implementation deps.dagger.android_support
+    //navgation
+    implementation deps.navigation.fragment_ktx
     implementation deps.navigation.ui_ktx
     //paging
     implementation deps.paging.runtime_ktx
@@ -67,4 +72,9 @@ dependencies {
     implementation deps.room.runtime
     implementation deps.room.rxjava2
     implementation deps.lifecycle.savedstate
+
+    kapt deps.dagger.android_support_compiler
+    kapt deps.dagger.compiler
+    kapt deps.room.compiler
+    kapt deps.lifecycle.compiler
 }
