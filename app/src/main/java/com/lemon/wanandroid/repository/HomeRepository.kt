@@ -10,6 +10,7 @@ import com.lemon.wanandroid.api.ApiResponse
 import com.lemon.wanandroid.api.HomeService
 import com.lemon.wanandroid.bean.Article
 import com.lemon.wanandroid.bean.Banner
+import com.lemon.wanandroid.bean.BaseApi
 import com.lemon.wanandroid.bean.Resource
 import com.lemon.wanandroid.utils.LiveDataCallAdapterFactory
 import okhttp3.OkHttpClient
@@ -34,5 +35,28 @@ class HomeRepository(
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()
             .create(HomeService::class.java)
+    }
+
+    fun getBanner(): LiveData<Resource<BaseApi<List<Banner>>>> {
+        return object : NetworkBoundResource<BaseApi<List<Banner>>,BaseApi<List<Banner>>>(){
+            override fun saveCallResult(item: BaseApi<List<Banner>>) {
+
+            }
+
+            override fun shouldFetch(data: BaseApi<List<Banner>>?): Boolean {
+                return true
+            }
+
+            override fun loadFromDb(): LiveData<BaseApi<List<Banner>>> {
+                var data  = MutableLiveData<BaseApi<List<Banner>>>()
+                return data
+            }
+
+            override fun createCall(): LiveData<ApiResponse<BaseApi<List<Banner>>>> {
+                return homeService.getBanner()
+            }
+
+        }.asLiveData()
+
     }
 }

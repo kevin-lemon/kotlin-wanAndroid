@@ -43,15 +43,8 @@ class LiveDataCallAdapter<R>(private val responseType: Type) :
                 if (started.compareAndSet(false, true)) {
                     call.enqueue(object : Callback<R> {
                         override fun onResponse(call: Call<R>, response: Response<R>) {
-                            if (response.isSuccessful){
-                                val body = response.body()
-                                if (body == null || body == 204){
-
-                                }
-                            }
                             postValue(ApiResponse.create(response))
                         }
-
                         override fun onFailure(call: Call<R>, throwable: Throwable) {
                             postValue(ApiResponse.create(throwable))
                         }

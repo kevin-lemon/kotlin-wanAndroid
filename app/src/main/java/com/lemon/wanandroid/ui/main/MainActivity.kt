@@ -37,7 +37,7 @@ class MainActivity : BaseActivity(){
     }
 
     override fun initData() {
-        val article = HomeRepository().homeService.getBanner()
+        val article = HomeRepository().getBanner()
         article.observe(this){
             Log.d("main", "res:$it")
         }

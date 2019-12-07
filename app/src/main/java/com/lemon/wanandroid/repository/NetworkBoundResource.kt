@@ -20,16 +20,17 @@ abstract class NetworkBoundResource<ResultType, RequestType>
     init {
         result.value = Resource.loading(null)
         val dbSource = loadFromDb()
-        result.addSource(dbSource){ data ->
-            result.removeSource(dbSource)
-            if(shouldFetch(data)){
-                fetchFromNetwork(dbSource)
-            }else{
-                result.addSource(dbSource){newData ->
-                    setValue(Resource.success(newData))
-                }
-            }
-        }
+        fetchFromNetwork(dbSource)
+//        result.addSource(dbSource){ data ->
+//            result.removeSource(dbSource)
+//            if(shouldFetch(data)){
+//                fetchFromNetwork(dbSource)
+//            }else{
+//                result.addSource(dbSource){newData ->
+//                    setValue(Resource.success(newData))
+//                }
+//            }
+//        }
     }
     private fun fetchFromNetwork(dbSource: LiveData<ResultType>) {
         val apiResponse = createCall()
