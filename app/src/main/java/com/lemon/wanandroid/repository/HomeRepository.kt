@@ -1,22 +1,15 @@
 package com.lemon.wanandroid.repository
 
-import android.app.Application
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.lemon.wanandroid.api.ApiResponse
 import com.lemon.wanandroid.api.HomeService
-import com.lemon.wanandroid.bean.Article
 import com.lemon.wanandroid.bean.Banner
-import com.lemon.wanandroid.bean.BaseApi
 import com.lemon.wanandroid.bean.Resource
 import com.lemon.wanandroid.utils.LiveDataCallAdapterFactory
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.math.log
 
 
 /**
@@ -37,26 +30,24 @@ class HomeRepository(
             .create(HomeService::class.java)
     }
 
-    fun getBanner(): LiveData<Resource<BaseApi<List<Banner>>>> {
-        return object : NetworkBoundResource<BaseApi<List<Banner>>,BaseApi<List<Banner>>>(){
-            override fun saveCallResult(item: BaseApi<List<Banner>>) {
-
+    fun getBanner(): LiveData<Resource<List<Banner>>> {
+        return object : NetworkBoundResource<List<Banner>,List<Banner>>(){
+            override fun saveCallResult(item: List<Banner>) {
             }
 
-            override fun shouldFetch(data: BaseApi<List<Banner>>?): Boolean {
+            override fun shouldFetch(data: List<Banner>?): Boolean {
                 return true
             }
 
-            override fun loadFromDb(): LiveData<BaseApi<List<Banner>>> {
-                var data  = MutableLiveData<BaseApi<List<Banner>>>()
+            override fun loadFromDb(): LiveData<List<Banner>> {
+                val data = MutableLiveData<List<Banner>>()
                 return data
             }
 
-            override fun createCall(): LiveData<ApiResponse<BaseApi<List<Banner>>>> {
+            override fun createCall(): LiveData<ApiResponse<List<Banner>>> {
                 return homeService.getBanner()
             }
 
         }.asLiveData()
-
     }
 }

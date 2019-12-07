@@ -30,23 +30,43 @@ import java.util.concurrent.atomic.AtomicBoolean
  * A Retrofit adapter that converts the Call into a LiveData of ApiResponse.
  * @param <R>
 </R> */
-class LiveDataCallAdapter<R>(private val responseType: Type) :
-    CallAdapter<R, LiveData<ApiResponse<R>>> {
+class LiveDataCallAdapter<T>(private val responseType: Type) :
+    CallAdapter<T, LiveData<T>> {
 
     override fun responseType() = responseType
 
-    override fun adapt(call: Call<R>): LiveData<ApiResponse<R>> {
-        return object : LiveData<ApiResponse<R>>() {
+    override fun adapt(call: Call<T>): LiveData<T> {
+        return object : LiveData<T>() {
             private var started = AtomicBoolean(false)
             override fun onActive() {
                 super.onActive()
                 if (started.compareAndSet(false, true)) {
-                    call.enqueue(object : Callback<R> {
-                        override fun onResponse(call: Call<R>, response: Response<R>) {
-                            postValue(ApiResponse.create(response))
+                    call.enqueue(object : Callback<T> {
+                        override fun onResponse(call: Call<T>, response: Response<T>) {
+                            if (response.isSuccessful) {
+                                val body = response.body()
+                                if (body == null || response.code() == 204) {
+                                    val value = ApiResponse<T>(
+                                        null,
+                                        -1,
+                                        response.errorBody()?.toString() ?: ""
+                                    ) as T
+                                    postValue(value)
+                                } else {
+                                    postValue(response.body())
+                                }
+                            } else {
+                                val value = ApiResponse<T>(
+                                    null,
+                                    -1,
+                                    response.errorBody()?.toString() ?: ""
+                                ) as T
+                                postValue(value)
+                            }
                         }
-                        override fun onFailure(call: Call<R>, throwable: Throwable) {
-                            postValue(ApiResponse.create(throwable))
+                        override fun onFailure(call: Call<T>, throwable: Throwable) {
+                            val value = ApiResponse<T>(null, -1, throwable.message ?: "") as T
+                            postValue(value)
                         }
                     })
                 }

@@ -4,11 +4,9 @@ import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.lemon.wanandroid.api.ApiEmptyResponse
-import com.lemon.wanandroid.api.ApiErrorResponse
 import com.lemon.wanandroid.api.ApiResponse
-import com.lemon.wanandroid.api.ApiSuccessResponse
 import com.lemon.wanandroid.bean.Resource
+import java.util.*
 
 /**
  * Created by wxk on 2019/12/4.
@@ -40,26 +38,6 @@ abstract class NetworkBoundResource<ResultType, RequestType>
         result.addSource(apiResponse) { response ->
             result.removeSource(apiResponse)
             result.removeSource(dbSource)
-            when (response) {
-                is ApiSuccessResponse -> {
-                        saveCallResult(processResponse(response))
-                            result.addSource(loadFromDb()) { newData ->
-                                setValue(Resource.success(newData))
-                    }
-                }
-                is ApiEmptyResponse -> {
-                        // reload from disk whatever we had
-                        result.addSource(loadFromDb()) { newData ->
-                            setValue(Resource.success(newData))
-                        }
-                }
-                is ApiErrorResponse -> {
-                    onFetchFailed()
-                    result.addSource(dbSource) { newData ->
-                        setValue(Resource.error(response.errorMessage, newData))
-                    }
-                }
-            }
         }
     }
     @MainThread
@@ -73,7 +51,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>
     fun asLiveData() = result as LiveData<Resource<ResultType>>
 
     @WorkerThread
-    protected open fun processResponse(response: ApiSuccessResponse<RequestType>) = response.body
+    protected open fun processResponse(response: ApiResponse<RequestType>) = response.data
     @WorkerThread
     protected abstract fun saveCallResult(item: RequestType)
 
