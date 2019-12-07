@@ -1,7 +1,10 @@
 package com.lemon.wanandroid.repository
 
+import android.app.Application
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.lemon.wanandroid.api.ApiResponse
 import com.lemon.wanandroid.api.HomeService
@@ -20,8 +23,10 @@ import kotlin.math.log
  */
 class HomeRepository(
 ) {
-    lateinit var data : LiveData<ApiResponse<Banner>>
+    private val result = MediatorLiveData<Resource<Banner>>()
     val homeService: HomeService = provideHomeService()
+
+    
     fun provideHomeService(): HomeService {
         return Retrofit.Builder()
             .baseUrl("https://www.wanandroid.com/")
@@ -29,8 +34,5 @@ class HomeRepository(
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()
             .create(HomeService::class.java)
-    }
-    fun getArticle(pageNum: String) {
-        data = homeService.getBanner()
     }
 }

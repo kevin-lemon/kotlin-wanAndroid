@@ -72,7 +72,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>
     fun asLiveData() = result as LiveData<Resource<ResultType>>
 
     @WorkerThread
-    protected open fun processResponse(response: ApiSuccessResponse<RequestType>) = response.data
+    protected open fun processResponse(response: ApiSuccessResponse<RequestType>) = response.body
     @WorkerThread
     protected abstract fun saveCallResult(item: RequestType)
 

@@ -2,6 +2,7 @@ package com.lemon.wanandroid.ui.main
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -31,12 +32,15 @@ class MainActivity : BaseActivity(){
 
     override fun initView() {
         button2.setOnClickListener {
-                HomeRepository().getArticle("0")
+                initData()
         }
     }
 
     override fun initData() {
-
+        val article = HomeRepository().homeService.getBanner()
+        article.observe(this){
+            Log.d("main", "res:$it")
+        }
     }
 
     override fun onResume() {

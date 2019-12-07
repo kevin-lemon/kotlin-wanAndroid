@@ -14,9 +14,7 @@ sealed class ApiResponse<T> {
                     ApiEmptyResponse()
                 } else {
                     ApiSuccessResponse(
-                        data = body,
-                        errorCode = 0,
-                        errorMessage = "success"
+                        body = body
                     )
                 }
             } else {
@@ -35,7 +33,5 @@ sealed class ApiResponse<T> {
 class ApiEmptyResponse<T> : ApiResponse<T>()
 data class ApiErrorResponse<T>(val errorCode: Int,val errorMessage: String) : ApiResponse<T>()
 data class ApiSuccessResponse<T>(
-    val data: T,
-    val errorCode: Int,
-    val errorMessage: String
+    val body: T
 )    : ApiResponse<T>()
