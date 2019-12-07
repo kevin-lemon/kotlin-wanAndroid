@@ -2,7 +2,6 @@ package com.lemon.wanandroid.utils
 
 import androidx.lifecycle.LiveData
 import com.lemon.wanandroid.api.ApiResponse
-import com.lemon.wanandroid.api.ApiSuccessResponse
 import retrofit2.CallAdapter
 import retrofit2.Retrofit
 import java.lang.reflect.ParameterizedType
