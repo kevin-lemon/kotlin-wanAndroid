@@ -13,9 +13,6 @@ import javax.inject.Inject
  */
 open class MainViewModel @Inject constructor(savedStateHandle: SavedStateHandle): ViewModel() {
     val userId: String = savedStateHandle["uid"]?:""
-    lateinit var data : LiveData<ApiResponse<Banner>>
-    fun getBanner(){
-        viewModelScope.launch {
-        }
-    }
+    var banner = HomeRepository().getBanner()
+
 }

@@ -12,7 +12,7 @@ import java.util.*
 /**
  * Created by wxk on 2019/12/4.
  */
-abstract class NetworkBoundResource<ResultType, RequestType>
+abstract class DBNetWorkResource<ResultType, RequestType>
 @MainThread constructor(){
 
     private val result = MediatorLiveData<Resource<ResultType>>()

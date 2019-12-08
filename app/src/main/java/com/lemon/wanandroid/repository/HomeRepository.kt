@@ -31,24 +31,8 @@ class HomeRepository(
     }
 
     fun getBanner(): LiveData<Resource<List<Banner>>> {
-        return object : NetworkBoundResource<List<Banner>,List<Banner>>(){
-            override fun saveCallResult(item: List<Banner>?) {
-
-            }
-
-            override fun shouldFetch(data: List<Banner>?): Boolean {
-                return true
-            }
-
-            override fun loadFromDb(): LiveData<List<Banner>> {
-                val data = MutableLiveData<List<Banner>>()
-                return data
-            }
-
-            override fun createCall(): LiveData<ApiResponse<List<Banner>>> {
-                return homeService.getBanner()
-            }
-
+        return object :NetWorkResource<List<Banner>>(){
+            override fun createCall(): LiveData<ApiResponse<List<Banner>>> = homeService.getBanner()
         }.asLiveData()
     }
 }
