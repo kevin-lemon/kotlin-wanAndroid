@@ -32,13 +32,16 @@ class MainActivity : BaseActivity(){
 
     override fun initView() {
         button2.setOnClickListener {
-            viewModel.getBanner()
+            viewModel.getArticle("2")
         }
     }
 
     override fun initData() {
         viewModel.banner.observe(this){
             Log.d("main", "res:$it")
+        }
+        viewModel.article.observe(this){
+            Log.d("main", "article res:$it")
         }
     }
 

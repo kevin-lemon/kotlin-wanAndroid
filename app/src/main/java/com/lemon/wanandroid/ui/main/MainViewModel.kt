@@ -14,8 +14,11 @@ import javax.inject.Inject
 open class MainViewModel @Inject constructor(savedStateHandle: SavedStateHandle): ViewModel() {
     val userId: String = savedStateHandle["uid"]?:""
     var banner = HomeRepository().getBanner()
-
+    var  article = HomeRepository().getArticle("0")
     fun getBanner(){
         banner = HomeRepository().getBanner()
+    }
+    fun getArticle(pageNum:String){
+        this.article = HomeRepository().getArticle(pageNum)
     }
 }
