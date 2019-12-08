@@ -32,7 +32,7 @@ class MainActivity : BaseActivity(){
 
     override fun initView() {
         button2.setOnClickListener {
-                initData()
+            viewModel.getBanner()
         }
     }
 

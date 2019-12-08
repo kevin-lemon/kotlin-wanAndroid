@@ -15,4 +15,7 @@ open class MainViewModel @Inject constructor(savedStateHandle: SavedStateHandle)
     val userId: String = savedStateHandle["uid"]?:""
     var banner = HomeRepository().getBanner()
 
+    fun getBanner(){
+        banner = HomeRepository().getBanner()
+    }
 }
