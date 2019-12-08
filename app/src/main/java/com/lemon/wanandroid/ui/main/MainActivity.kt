@@ -43,6 +43,7 @@ class MainActivity : BaseActivity(){
         viewModel.article.observe(this){
             Log.d("main", "article res:$it")
         }
+        viewModel.getArticle("0")
     }
 
     override fun onResume() {

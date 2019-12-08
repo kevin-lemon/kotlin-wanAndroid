@@ -2,6 +2,7 @@ package com.lemon.wanandroid.ui.main
 
 import androidx.lifecycle.*
 import com.lemon.wanandroid.api.ApiResponse
+import com.lemon.wanandroid.bean.Article
 import com.lemon.wanandroid.bean.Banner
 import com.lemon.wanandroid.bean.Resource
 import com.lemon.wanandroid.repository.HomeRepository
@@ -14,11 +15,19 @@ import javax.inject.Inject
 open class MainViewModel @Inject constructor(savedStateHandle: SavedStateHandle): ViewModel() {
     val userId: String = savedStateHandle["uid"]?:""
     var banner = HomeRepository().getBanner()
-    var  article = HomeRepository().getArticle("0")
+    private val _pageNum = MutableLiveData<String>()
+    val pageNum: LiveData<String>
+        get() = _pageNum
+    var  article :LiveData<Resource<Article>> = Transformations
+    .switchMap(_pageNum) { pageNum ->
+        _pageNum.value?.let {
+            HomeRepository().getArticle(it)
+        }
+    }
     fun getBanner(){
         banner = HomeRepository().getBanner()
     }
     fun getArticle(pageNum:String){
-        this.article = HomeRepository().getArticle(pageNum)
+        _pageNum.value = pageNum
     }
 }
