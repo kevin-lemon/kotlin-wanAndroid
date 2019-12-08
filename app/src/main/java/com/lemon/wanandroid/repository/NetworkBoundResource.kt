@@ -1,5 +1,6 @@
 package com.lemon.wanandroid.repository
 
+import android.widget.Switch
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
@@ -38,6 +39,16 @@ abstract class NetworkBoundResource<ResultType, RequestType>
         result.addSource(apiResponse) { response ->
             result.removeSource(apiResponse)
             result.removeSource(dbSource)
+            when(response.errorCode){
+                0->{
+                    saveCallResult(processResponse(response))
+                    setValue(Resource.success(result.value?.data))
+                }
+                -1->{
+                    onFetchFailed()
+                    setValue(Resource.error(response.errorMsg, null))
+                }
+            }
         }
     }
     @MainThread
@@ -53,7 +64,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>
     @WorkerThread
     protected open fun processResponse(response: ApiResponse<RequestType>) = response.data
     @WorkerThread
-    protected abstract fun saveCallResult(item: RequestType)
+    protected abstract fun saveCallResult(item: RequestType?)
 
     @MainThread
     protected abstract fun shouldFetch(data: ResultType?): Boolean

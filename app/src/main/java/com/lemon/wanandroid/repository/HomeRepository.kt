@@ -32,7 +32,8 @@ class HomeRepository(
 
     fun getBanner(): LiveData<Resource<List<Banner>>> {
         return object : NetworkBoundResource<List<Banner>,List<Banner>>(){
-            override fun saveCallResult(item: List<Banner>) {
+            override fun saveCallResult(item: List<Banner>?) {
+
             }
 
             override fun shouldFetch(data: List<Banner>?): Boolean {
