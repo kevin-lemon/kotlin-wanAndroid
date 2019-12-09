@@ -16,8 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 /**
  * Created by Lemon on 2019/11/29.
  */
-class HomeRepository(
-) {
+class HomeRepository() {
     private val result = MediatorLiveData<Resource<Banner>>()
     val homeService: HomeService = provideHomeService()
 
