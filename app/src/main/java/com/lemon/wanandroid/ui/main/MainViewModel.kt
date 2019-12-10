@@ -15,19 +15,23 @@ import javax.inject.Inject
 open class MainViewModel @Inject constructor(savedStateHandle: SavedStateHandle): ViewModel() {
     val userId: String = savedStateHandle["uid"]?:""
     var banner = HomeRepository().getBanner()
-    private val _pageNum = MutableLiveData<String>()
-    val pageNum: LiveData<String>
+    private val _pageNum = MutableLiveData<Int>()
+    val pageNum: LiveData<Int>
         get() = _pageNum
     var  article :LiveData<Resource<Article>> = Transformations
     .switchMap(_pageNum) { pageNum ->
-        _pageNum.value?.let {
+        pageNum?.let {
             HomeRepository().getArticle(it)
         }
+    }
+    init {
+        getBanner()
+        getArticle(0)
     }
     fun getBanner(){
         banner = HomeRepository().getBanner()
     }
-    fun getArticle(pageNum:String){
+    fun getArticle(pageNum:Int){
         _pageNum.value = pageNum
     }
 }

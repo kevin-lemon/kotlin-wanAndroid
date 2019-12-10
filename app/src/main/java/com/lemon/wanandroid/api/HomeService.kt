@@ -13,7 +13,7 @@ import retrofit2.http.Path
 interface HomeService{
 
     @GET("article/list/{pageNum}/json")
-    fun getArticle(@Path("pageNum") pageNum :String): LiveData<ApiResponse<Article>>
+    fun getArticle(@Path("pageNum") pageNum :Int): LiveData<ApiResponse<Article>>
 
     @GET("banner/json")
     fun getBanner(): LiveData<ApiResponse<List<Banner>>>

@@ -35,7 +35,7 @@ class HomeRepository() {
             override fun createCall(): LiveData<ApiResponse<List<Banner>>> = homeService.getBanner()
         }.asLiveData()
     }
-    fun getArticle(pageNum:String):LiveData<Resource<Article>>{
+    fun getArticle(pageNum:Int):LiveData<Resource<Article>>{
         return object :NetWorkResource<Article>(){
             override fun createCall(): LiveData<ApiResponse<Article>> = homeService.getArticle(pageNum)
         }.asLiveData()

@@ -31,9 +31,6 @@ class MainActivity : BaseActivity(){
     }
 
     override fun initView() {
-        button2.setOnClickListener {
-            viewModel.getArticle("2")
-        }
     }
 
     override fun initData() {
@@ -43,7 +40,6 @@ class MainActivity : BaseActivity(){
         viewModel.article.observe(this){
             Log.d("main", "article res:$it")
         }
-        viewModel.getArticle("0")
     }
 
     override fun onResume() {
