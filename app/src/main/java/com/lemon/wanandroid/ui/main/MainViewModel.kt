@@ -10,8 +10,7 @@ import javax.inject.Inject
 /**
  * Created by Lemon on 2019/11/29.
  */
-open class MainViewModel @Inject constructor(savedStateHandle: SavedStateHandle): ViewModel() {
-    val userId: String = savedStateHandle["uid"]?:""
+open class MainViewModel @Inject constructor(): ViewModel() {
     var banner :LiveData<Resource<List<Banner>>> = MutableLiveData()
     private val _pageNum = MutableLiveData<Int>()
     val pageNum: LiveData<Int>

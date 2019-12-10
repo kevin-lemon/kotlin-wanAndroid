@@ -21,11 +21,7 @@ import javax.inject.Inject
  * Created by Lemon on 2019/11/29.
  */
 class MainActivity : BaseActivity(){
-    private val viewModel: MainViewModel by viewModels(
-        factoryProducer = {
-            SavedStateViewModelFactory(application,this)
-        }
-    )
+    private val viewModel: MainViewModel by viewModels()
     override fun getContentViewId(): Int {
         return R.layout.activity_main
     }
