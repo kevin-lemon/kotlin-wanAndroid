@@ -6,10 +6,12 @@ import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
-@Module
+@Module(includes = [ViewModelModule::class])
 class AppModule {
 
+    @Singleton
     @Provides
     fun provideApiService(): ApiService {
         return Retrofit.Builder()
