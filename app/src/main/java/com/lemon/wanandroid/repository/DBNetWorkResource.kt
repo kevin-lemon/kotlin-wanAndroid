@@ -5,6 +5,7 @@ import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import com.lemon.wanandroid.AppExecutors
 import com.lemon.wanandroid.api.ApiResponse
 import com.lemon.wanandroid.bean.Resource
 import java.util.*
@@ -13,7 +14,7 @@ import java.util.*
  * Created by wxk on 2019/12/4.
  */
 abstract class DBNetWorkResource<ResultType, RequestType>
-@MainThread constructor(){
+@MainThread constructor(appExecutors: AppExecutors){
 
     private val result = MediatorLiveData<Resource<ResultType>>()
     init {

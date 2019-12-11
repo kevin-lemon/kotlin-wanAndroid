@@ -10,7 +10,7 @@ import javax.inject.Inject
 /**
  * Created by Lemon on 2019/11/29.
  */
-open class MainViewModel @Inject constructor(): ViewModel() {
+open class HomeViewModel @Inject constructor(repository: HomeRepository): ViewModel() {
     var banner :LiveData<Resource<List<Banner>>> = MutableLiveData()
     private val _pageNum = MutableLiveData<Int>()
     val pageNum: LiveData<Int>
@@ -18,12 +18,12 @@ open class MainViewModel @Inject constructor(): ViewModel() {
     var  article :LiveData<Resource<Article>> = Transformations
     .switchMap(_pageNum) { pageNum ->
         pageNum?.let {
-            HomeRepository().getArticle(it)
+            repository.getArticle(it)
         }
     }
 
     init {
-        banner = HomeRepository().getBanner()
+        banner = repository.getBanner()
         getArticle(0)
     }
 

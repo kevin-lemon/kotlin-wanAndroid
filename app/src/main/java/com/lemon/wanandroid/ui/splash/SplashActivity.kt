@@ -2,6 +2,7 @@ package com.lemon.wanandroid.ui.splash
 
 import com.lemon.wanandroid.BaseActivity
 import com.lemon.wanandroid.R
+import dagger.android.AndroidInjector
 
 /**
  * Created by Lemon on 2019/11/29.
@@ -12,11 +13,8 @@ import com.lemon.wanandroid.R
     }
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
 }

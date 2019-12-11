@@ -1,27 +1,34 @@
 package com.lemon.wanandroid.ui.main
 
-import android.Manifest
-import android.content.pm.PackageManager
+import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.lemon.wanandroid.BaseActivity
 import com.lemon.wanandroid.R
-import com.lemon.wanandroid.repository.HomeRepository
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import dagger.android.AndroidInjection
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
 import javax.inject.Inject
+
 
 /**
  * Created by Lemon on 2019/11/29.
  */
-class MainActivity : BaseActivity(){
-    private val viewModel: MainViewModel by viewModels()
+class MainActivity : BaseActivity() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel: HomeViewModel by viewModels{
+        viewModelFactory
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
+        super.onCreate(savedInstanceState)
+    }
     override fun getContentViewId(): Int {
         return R.layout.activity_main
     }
