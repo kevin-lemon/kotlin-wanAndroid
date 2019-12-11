@@ -1,4 +1,4 @@
-package com.lemon.wanandroid.di
+package com.lemon.wanandroid.di.module
 
 import com.lemon.wanandroid.api.ApiService
 import com.lemon.wanandroid.utils.LiveDataCallAdapterFactory
@@ -6,7 +6,6 @@ import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 @Module
 class AppModule {
