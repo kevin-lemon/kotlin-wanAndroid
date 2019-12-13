@@ -1,4 +1,4 @@
-package com.lemon.wanandroid.ui.main
+package com.lemon.wanandroid.ui.home
 
 import androidx.lifecycle.*
 import com.lemon.wanandroid.bean.Article

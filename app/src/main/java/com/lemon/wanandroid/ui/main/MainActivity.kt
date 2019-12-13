@@ -1,15 +1,15 @@
 package com.lemon.wanandroid.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import com.lemon.wanandroid.BaseActivity
 import com.lemon.wanandroid.R
+import com.lemon.wanandroid.ui.home.HomeViewModel
 import dagger.android.AndroidInjection
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 
@@ -28,6 +28,8 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
+        val navController = Navigation.findNavController(this, R.id.container)
+        NavigationUI.setupWithNavController(bottom_nav, navController)
     }
     override fun getContentViewId(): Int {
         return R.layout.activity_main
@@ -37,12 +39,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initData() {
-        viewModel.banner.observe(this){
-            Log.d("main", "res:$it")
-        }
-        viewModel.article.observe(this){
-            Log.d("main", "article res:$it")
-        }
+
     }
 
     override fun onResume() {

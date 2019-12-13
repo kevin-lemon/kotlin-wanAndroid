@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    android:label="nav_main"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.lemon.wanandroid.ui.home.HomeFragment"
+        android:label="homeFragmnet"
+        />
+    <fragment
+        android:id="@+id/projectFragment"
+        android:name="com.lemon.wanandroid.ui.project.ProjectFragment"
+        android:label="projectFragment"/>
+</navigation>
