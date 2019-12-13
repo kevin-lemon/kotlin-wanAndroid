@@ -18,13 +18,6 @@ import javax.inject.Inject
  */
 class MainActivity : BaseActivity() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private val viewModel: HomeViewModel by viewModels{
-        viewModelFactory
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
