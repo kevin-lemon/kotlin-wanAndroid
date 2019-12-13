@@ -14,4 +14,16 @@
         android:id="@+id/projectFragment"
         android:name="com.lemon.wanandroid.ui.project.ProjectFragment"
         android:label="projectFragment"/>
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.lemon.wanandroid.ui.article.ArticleFragment"
+        android:label="articleFragment"/>
+    <fragment
+        android:id="@+id/systemFragment"
+        android:name="com.lemon.wanandroid.ui.system.SystemFragment"
+        android:label="systemFragment"/>
+    <fragment
+        android:id="@+id/navigationFragment"
+        android:name="com.lemon.wanandroid.ui.navigation.NavigationFragment"
+        android:label="navigationFragment"/>
 </navigation>
