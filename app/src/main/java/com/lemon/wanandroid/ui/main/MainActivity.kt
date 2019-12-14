@@ -1,34 +1,32 @@
 package com.lemon.wanandroid.ui.main
 
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.navigation.NavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.lemon.wanandroid.BaseActivity
 import com.lemon.wanandroid.R
-import com.lemon.wanandroid.ui.home.HomeViewModel
+import com.lemon.wanandroid.setupWithNavController
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
-import javax.inject.Inject
 
 
 /**
  * Created by Lemon on 2019/11/29.
  */
 class MainActivity : BaseActivity() {
-
+    private var currentNavController: LiveData<NavController>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        val navController = Navigation.findNavController(this, R.id.container)
-        NavigationUI.setupWithNavController(bottom_nav, navController)
     }
     override fun getContentViewId(): Int {
         return R.layout.activity_main
     }
 
     override fun initView() {
+        setupBottomNavigationBar()
     }
 
     override fun initData() {
@@ -37,5 +35,22 @@ class MainActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
+    }
+
+    private fun setupBottomNavigationBar() {
+        val navGraphIds = listOf(R.navigation.home,R.navigation.project,R.navigation.article,R.navigation.system,R.navigation.nagivation)
+
+        val controller = bottom_nav.setupWithNavController(
+            navGraphIds = navGraphIds,
+            fragmentManager = supportFragmentManager,
+            containerId = R.id.nav_host_container,
+            intent = intent
+        )
+
+        currentNavController = controller
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return currentNavController?.value?.navigateUp() ?: false
     }
 }

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/homeFragment"
+    <item android:id="@+id/home"
         android:title="@string/item_home"
         android:icon="@drawable/ic_home" />
-    <item android:id="@+id/projectFragment"
+    <item android:id="@+id/project"
         android:title="@string/item_project"
         android:icon="@drawable/ic_project" />
-    <item android:id="@+id/articleFragment"
+    <item android:id="@+id/article"
         android:title="@string/item_article"
         android:icon="@drawable/ic_article" />
-    <item android:id="@+id/systemFragment"
+    <item android:id="@+id/system"
         android:title="@string/item_system"
         android:icon="@drawable/ic_system" />
-    <item android:id="@+id/navigationFragment"
+    <item android:id="@+id/navigation"
         android:title="@string/item_navigation"
         android:icon="@drawable/ic_navigation" />
 </menu>

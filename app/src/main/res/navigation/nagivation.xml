@@ -1,0 +1,11 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    android:label="nav_main"
+    app:startDestination="@id/navigationFragment">
+    <fragment
+        android:id="@+id/navigationFragment"
+        android:name="com.lemon.wanandroid.ui.navigation.NavigationFragment"
+        android:label="navigationFragment"
+        />
+</navigation>
