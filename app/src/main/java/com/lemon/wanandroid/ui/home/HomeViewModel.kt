@@ -43,11 +43,11 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository): ViewMo
                         article.postValue(article.value)
                     }
                 }
-                unregister()
+                unregisterResourcAarticleObserver()
             }
             Status.ERROR->{
                 haveNextPageState = false
-                unregister()
+                unregisterResourcAarticleObserver()
             }
         }
     }
@@ -66,7 +66,7 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository): ViewMo
         }
     }
 
-   private fun unregister(){
+   private fun unregisterResourcAarticleObserver(){
        resourcAarticle.removeObserver(resourceArticleObserver)
    }
 }
