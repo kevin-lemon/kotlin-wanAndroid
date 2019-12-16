@@ -13,6 +13,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
 //        signingConfigs {
@@ -44,6 +45,7 @@ dependencies {
     implementation deps.kotlin.stdlib
     implementation deps.support.app_compat
     implementation deps.support.core_ktx
+    implementation deps.support.multidex
     implementation deps.kotlin.kotlinx_coroutines
     implementation deps.retrofit.retrofit2
     implementation deps.retrofit.converter_gson
@@ -51,6 +53,11 @@ dependencies {
     implementation deps.okhttp3
     implementation deps.constraint_layout
     implementation deps.support.fragment_ktx
+    //banner
+    implementation deps.banner
+    implementation deps.glide.runtime
+    implementation deps.brvah
+    implementation deps.smartrefresh.SmartRefreshLayout
     //WorkManager
     implementation deps.workManager.runtime_ktx
     implementation deps.workManager.work_rxjava2
@@ -75,8 +82,10 @@ dependencies {
     implementation deps.room.rxjava2
     implementation deps.lifecycle.savedstate
 
+
     kapt deps.dagger.android_support_compiler
     kapt deps.dagger.compiler
     kapt deps.room.compiler
     kapt deps.lifecycle.compiler
+    kapt deps.glide.compiler
 }

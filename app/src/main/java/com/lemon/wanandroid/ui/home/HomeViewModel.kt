@@ -38,16 +38,24 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository): ViewMo
                     if (article.value == null){
                         article.value = data.datas.toMutableList()
                         article.postValue(article.value)
-                    }else{
-                        article.value?.addAll(data.datas.toMutableList())
-                        article.postValue(article.value)
+                    }
+                    when(data.curPage){
+                        1->{
+                            article.value?.clear()
+                            article.value?.addAll(data.datas.toMutableList())
+                            article.postValue(article.value)
+                        }
+                        else->{
+                            article.value?.addAll(data.datas.toMutableList())
+                            article.postValue(article.value)
+                        }
                     }
                 }
-                unregisterResourcAarticleObserver()
+                unregisterResourcArticleObserver()
             }
             Status.ERROR->{
                 haveNextPageState = false
-                unregisterResourcAarticleObserver()
+                unregisterResourcArticleObserver()
             }
         }
     }
@@ -57,16 +65,22 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository): ViewMo
         _pageNum.postValue(0)
     }
 
-    fun getArticle(){
-        if (haveNextPageState){
+    //false为加载更多，true为刷新获取第一页
+    fun getArticle(isRefresh: Boolean){
+        if(isRefresh){
+            _pageNum.value = 0
             resourcAarticle.observeForever(resourceArticleObserver)
-            _pageNum.value?.let {
-                _pageNum.postValue(it+1)
+        }else{
+            if (haveNextPageState){
+                _pageNum.value?.let {
+                    _pageNum.value = it+1
+                }
+                resourcAarticle.observeForever(resourceArticleObserver)
             }
         }
     }
 
-   private fun unregisterResourcAarticleObserver(){
+   private fun unregisterResourcArticleObserver(){
        resourcAarticle.removeObserver(resourceArticleObserver)
    }
 }
