@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.lemon.wanandroid.BaseFragment
 import com.lemon.wanandroid.R
+import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment(){
@@ -22,6 +23,9 @@ class HomeFragment : BaseFragment(){
     }
 
     override fun initView() {
+        next_btn.setOnClickListener {
+            viewModel.getArticle()
+        }
     }
 
     override fun initData() {

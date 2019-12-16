@@ -1,6 +1,8 @@
 package com.lemon.wanandroid.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import com.lemon.wanandroid.api.ApiResponse
 import com.lemon.wanandroid.api.ApiService
 import com.lemon.wanandroid.bean.Article
@@ -21,9 +23,9 @@ class HomeRepository @Inject constructor(private val apiService: ApiService) {
             override fun createCall(): LiveData<ApiResponse<List<Banner>>> = apiService.getBanner()
         }.asLiveData()
     }
-    fun getArticle(pageNum:Int):LiveData<Resource<Article>>{
+    fun getArticle(pageNum:Int): MutableLiveData<Resource<Article>> {
         return object :NetWorkResource<Article>(){
             override fun createCall(): LiveData<ApiResponse<Article>> = apiService.getArticle(pageNum)
-        }.asLiveData()
+        }.asMutableLiveData()
     }
 }

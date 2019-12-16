@@ -4,6 +4,7 @@ import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import com.lemon.wanandroid.api.ApiResponse
 import com.lemon.wanandroid.bean.Resource
 
@@ -42,6 +43,7 @@ abstract class NetWorkResource<RequestType> @MainThread constructor(){
 
     fun asLiveData() = result as LiveData<Resource<RequestType>>
 
+    fun asMutableLiveData() = result as MutableLiveData<Resource<RequestType>>
     @WorkerThread
     protected open fun processResponse(response: ApiResponse<RequestType>) = response.data
 

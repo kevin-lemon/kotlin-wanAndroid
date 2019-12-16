@@ -12,6 +12,7 @@ import dagger.android.support.AndroidSupportInjection
 abstract class BaseFragment : Fragment() {
 
     private var mContentView : View? = null
+    private var isAlreadyView : Boolean = false
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
@@ -24,15 +25,19 @@ abstract class BaseFragment : Fragment() {
     ): View? {
         if (mContentView == null){
             mContentView  = inflater.inflate(getContentViewId(), container, false)
-            initView()
-            initData()
+            isAlreadyView = false
         }
         return mContentView
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (!isAlreadyView){
+            initView()
+            initData()
+            isAlreadyView = true
+        }
+    }
     abstract fun getContentViewId():Int
     abstract fun initView()
     abstract fun initData()
