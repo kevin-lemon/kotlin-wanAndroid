@@ -36,7 +36,7 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository) : ViewM
                         article.value = data.datas.toMutableList()
                         article.postValue(article.value)
                     }
-                    isHaveMoreArticle = data.datas.size >= 20
+                    isHaveMoreArticle = data.curPage < data.pageCount
                     when (data.curPage) {
                         1 -> {
                             article.value?.clear()
@@ -52,7 +52,6 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository) : ViewM
                 unregisterResourceArticleObserver()
             }
             Status.ERROR -> {
-                isHaveMoreArticle = false
                 unregisterResourceArticleObserver()
             }
             Status.LOADING-> {
