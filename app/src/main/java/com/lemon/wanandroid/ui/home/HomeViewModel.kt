@@ -55,6 +55,9 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository) : ViewM
                 isHaveMoreArticle = false
                 unregisterResourceArticleObserver()
             }
+            Status.LOADING-> {
+
+            }
         }
     }
 
