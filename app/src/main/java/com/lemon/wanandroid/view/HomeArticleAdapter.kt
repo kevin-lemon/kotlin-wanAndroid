@@ -12,8 +12,8 @@ class HomeArticleAdapter(layoutResId: Int) :
     BaseQuickAdapter<Article.Data, BaseViewHolder>(layoutResId) {
 
     override fun convert(helper: BaseViewHolder, item: Article.Data) {
-        val type = item?.type ?: 0
-        val isRefresh = item?.fresh ?: false
+        val type = item?.type
+        val isRefresh = item?.fresh
         var tip: String? = null
         if (type == 1) {
             tip = "置顶"
