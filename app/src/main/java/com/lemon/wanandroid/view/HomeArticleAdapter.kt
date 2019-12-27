@@ -27,7 +27,7 @@ class HomeArticleAdapter(layoutResId: Int) :
                 setGone(R.id.tv_home_author,!TextUtils.isEmpty(author))
             setText(
                 R.id.tv_home_public_time,
-                format(publishTime ?: System.currentTimeMillis())
+                format(if(publishTime > 0 ) publishTime else System.currentTimeMillis())
             )
             setText(R.id.tv_home_category, superChapterName)
             setGone(
