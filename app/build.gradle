@@ -58,6 +58,7 @@ dependencies {
     implementation deps.glide.runtime
     implementation deps.brvah
     implementation deps.smartrefresh.SmartRefreshLayout
+    implementation deps.smartrefresh.SmartRefreshLayoutHead
     //WorkManager
     implementation deps.workManager.runtime_ktx
     implementation deps.workManager.work_rxjava2

@@ -11,41 +11,39 @@ import javax.inject.Inject
 /**
  * Created by Lemon on 2019/11/29.
  */
-open class HomeViewModel @Inject constructor(repository: HomeRepository): ViewModel(){
-    var banner :LiveData<Resource<List<Banner>>> = MutableLiveData()
+open class HomeViewModel @Inject constructor(repository: HomeRepository) : ViewModel() {
+    var banner: LiveData<Resource<List<Banner>>> = MutableLiveData()
 
-    var article : MutableLiveData<MutableList<Article.Data>> = MutableLiveData()
+    var article: MutableLiveData<MutableList<Article.Data>> = MutableLiveData()
 
     private val _pageNum = MutableLiveData<Int>()
 
     val pageNum: LiveData<Int>
         get() = _pageNum
-
-    private var haveNextPageState : Boolean = true
-
-    private var  resourceArticle :LiveData<Resource<Article>> = Transformations
-    .switchMap(pageNum) { pageNum ->
-        pageNum?.let {
-            repository.getArticle(it)
+    var isHaveMoreArticle = false
+    private var resourceArticle: LiveData<Resource<Article>> = Transformations
+        .switchMap(pageNum) { pageNum ->
+            pageNum?.let {
+                repository.getArticle(it)
+            }
         }
-    }
 
-    private val resourceArticleObserver = Observer<Resource<Article>> {
-            resource->
-        when(resource.status){
-            Status.SUCCESS->{
-                resource.data?.let {data->
-                    if (article.value == null){
+    private val resourceArticleObserver = Observer<Resource<Article>> { resource ->
+        when (resource.status) {
+            Status.SUCCESS -> {
+                resource.data?.let { data ->
+                    if (article.value == null) {
                         article.value = data.datas.toMutableList()
                         article.postValue(article.value)
                     }
-                    when(data.curPage){
-                        1->{
+                    isHaveMoreArticle = data.datas.size >= 20
+                    when (data.curPage) {
+                        1 -> {
                             article.value?.clear()
                             article.value?.addAll(data.datas.toMutableList())
                             article.postValue(article.value)
                         }
-                        else->{
+                        else -> {
                             article.value?.addAll(data.datas.toMutableList())
                             article.postValue(article.value)
                         }
@@ -53,12 +51,13 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository): ViewMo
                 }
                 unregisterResourceArticleObserver()
             }
-            Status.ERROR->{
-                haveNextPageState = false
+            Status.ERROR -> {
+                isHaveMoreArticle = false
                 unregisterResourceArticleObserver()
             }
         }
     }
+
     init {
         banner = repository.getBanner()
         resourceArticle.observeForever(resourceArticleObserver)
@@ -66,21 +65,21 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository): ViewMo
     }
 
     //false为加载更多，true为刷新获取第一页
-    fun getArticle(isRefresh: Boolean){
-        if(isRefresh){
+    fun getArticle(isRefresh: Boolean) {
+        if (isRefresh) {
             _pageNum.value = 0
             resourceArticle.observeForever(resourceArticleObserver)
-        }else{
-            if (haveNextPageState){
+        } else {
+            if (isHaveMoreArticle) {
                 _pageNum.value?.let {
-                    _pageNum.value = it+1
+                    _pageNum.value = it + 1
                 }
                 resourceArticle.observeForever(resourceArticleObserver)
             }
         }
     }
 
-   private fun unregisterResourceArticleObserver(){
-       resourceArticle.removeObserver(resourceArticleObserver)
-   }
+    private fun unregisterResourceArticleObserver() {
+        resourceArticle.removeObserver(resourceArticleObserver)
+    }
 }
