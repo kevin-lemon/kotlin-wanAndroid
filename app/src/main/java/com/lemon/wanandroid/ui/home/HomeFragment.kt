@@ -42,7 +42,7 @@ class HomeFragment : BaseFragment(){
 
         })
         article_view?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        adapter = HomeArticleAdapter(R.layout.item_home_article)
+        adapter = HomeArticleAdapter(R.layout.item_article)
         article_view?.adapter = adapter
     }
 

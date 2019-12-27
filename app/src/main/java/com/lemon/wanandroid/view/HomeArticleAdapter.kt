@@ -24,7 +24,7 @@ class HomeArticleAdapter(layoutResId: Int) :
             item?.run {
                 setText(R.id.tv_home_title, title)
                 setText(R.id.tv_home_author, author)
-                setGone(R.id.tv_home_author,author.isEmpty())
+                setGone(R.id.tv_home_author,!TextUtils.isEmpty(author))
             setText(
                 R.id.tv_home_public_time,
                 format(publishTime ?: System.currentTimeMillis())
@@ -33,7 +33,7 @@ class HomeArticleAdapter(layoutResId: Int) :
             setGone(
                 R.id.tv_home_recent,
                 (type == 1 || isRefresh) && !TextUtils.isEmpty(tip)
-            )   // true 显示，false 隐藏
+            )
             setText(R.id.tv_home_recent, tip)
             }
         }

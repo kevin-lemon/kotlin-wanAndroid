@@ -23,7 +23,7 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository): ViewMo
 
     private var haveNextPageState : Boolean = true
 
-    private var  resourcAarticle :LiveData<Resource<Article>> = Transformations
+    private var  resourceArticle :LiveData<Resource<Article>> = Transformations
     .switchMap(pageNum) { pageNum ->
         pageNum?.let {
             repository.getArticle(it)
@@ -51,17 +51,17 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository): ViewMo
                         }
                     }
                 }
-                unregisterResourcArticleObserver()
+                unregisterResourceArticleObserver()
             }
             Status.ERROR->{
                 haveNextPageState = false
-                unregisterResourcArticleObserver()
+                unregisterResourceArticleObserver()
             }
         }
     }
     init {
         banner = repository.getBanner()
-        resourcAarticle.observeForever(resourceArticleObserver)
+        resourceArticle.observeForever(resourceArticleObserver)
         _pageNum.postValue(0)
     }
 
@@ -69,18 +69,18 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository): ViewMo
     fun getArticle(isRefresh: Boolean){
         if(isRefresh){
             _pageNum.value = 0
-            resourcAarticle.observeForever(resourceArticleObserver)
+            resourceArticle.observeForever(resourceArticleObserver)
         }else{
             if (haveNextPageState){
                 _pageNum.value?.let {
                     _pageNum.value = it+1
                 }
-                resourcAarticle.observeForever(resourceArticleObserver)
+                resourceArticle.observeForever(resourceArticleObserver)
             }
         }
     }
 
-   private fun unregisterResourcArticleObserver(){
-       resourcAarticle.removeObserver(resourceArticleObserver)
+   private fun unregisterResourceArticleObserver(){
+       resourceArticle.removeObserver(resourceArticleObserver)
    }
 }
