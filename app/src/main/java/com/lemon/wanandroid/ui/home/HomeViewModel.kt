@@ -20,7 +20,7 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository) : ViewM
 
     val pageNum: LiveData<Int>
         get() = _pageNum
-    var isHaveMoreArticle = false
+    var isHaveMoreArticle = true
     private var resourceArticle: LiveData<Resource<Article>> = Transformations
         .switchMap(pageNum) { pageNum ->
             pageNum?.let {
