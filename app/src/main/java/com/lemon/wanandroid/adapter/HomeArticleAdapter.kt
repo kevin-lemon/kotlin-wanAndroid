@@ -1,7 +1,6 @@
-package com.lemon.wanandroid.view
+package com.lemon.wanandroid.adapter
 
 import android.text.TextUtils
-import androidx.room.util.StringUtil
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.lemon.wanandroid.R

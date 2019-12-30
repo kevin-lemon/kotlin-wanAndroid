@@ -15,7 +15,6 @@ import javax.inject.Singleton
 /**
  * Created by Lemon on 2019/11/29.
  */
-@Singleton
 class HomeRepository @Inject constructor(private val apiService: ApiService) {
 
     fun getBanner(): LiveData<Resource<List<Banner>>> {

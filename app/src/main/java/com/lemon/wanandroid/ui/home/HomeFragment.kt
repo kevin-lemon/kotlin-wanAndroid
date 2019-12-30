@@ -10,7 +10,7 @@ import com.lemon.wanandroid.BaseFragment
 import com.lemon.wanandroid.R
 import com.lemon.wanandroid.WanApp
 import com.lemon.wanandroid.utils.GlideImageLoader
-import com.lemon.wanandroid.view.HomeArticleAdapter
+import com.lemon.wanandroid.adapter.HomeArticleAdapter
 import com.scwang.smartrefresh.header.DropBoxHeader
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle
@@ -51,7 +51,8 @@ class HomeFragment : BaseFragment() {
         })
         article_view?.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        adapter = HomeArticleAdapter(R.layout.item_article)
+        adapter =
+            HomeArticleAdapter(R.layout.item_article)
         article_view?.adapter = adapter
         refreshlayout.setRefreshHeader(DropBoxHeader(context))
         refreshlayout.setRefreshFooter(ClassicsFooter(context).setSpinnerStyle(SpinnerStyle.Scale))
