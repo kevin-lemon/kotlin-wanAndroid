@@ -35,7 +35,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupBottomNavigationBar() {
-        val navGraphIds = listOf(R.navigation.home,R.navigation.project,R.navigation.article,R.navigation.system,R.navigation.nagivation)
+        val navGraphIds = listOf(R.navigation.home,R.navigation.project,R.navigation.system,R.navigation.article,R.navigation.nagivation)
 
         val controller = bottom_nav.setupWithNavController(
             navGraphIds = navGraphIds,

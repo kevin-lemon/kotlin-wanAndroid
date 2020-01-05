@@ -7,12 +7,12 @@
     <item android:id="@+id/project"
         android:title="@string/item_project"
         android:icon="@drawable/ic_project" />
-    <item android:id="@+id/article"
-        android:title="@string/item_article"
-        android:icon="@drawable/ic_article" />
     <item android:id="@+id/system"
         android:title="@string/item_system"
         android:icon="@drawable/ic_system" />
+    <item android:id="@+id/article"
+        android:title="@string/item_article"
+        android:icon="@drawable/ic_article" />
     <item android:id="@+id/navigation"
         android:title="@string/item_navigation"
         android:icon="@drawable/ic_navigation" />
