@@ -32,16 +32,17 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository) : ViewM
         when (resource.status) {
             Status.SUCCESS -> {
                 resource.data?.let { data ->
-                    if (article.value == null) {
-                        article.value = data.datas.toMutableList()
-                        article.postValue(article.value)
-                    }
-                    isHaveMoreArticle = data.curPage < data.pageCount
+                    isHaveMoreArticle = data.curPage <= data.pageCount
                     when (data.curPage) {
                         1 -> {
-                            article.value?.clear()
-                            article.value?.addAll(data.datas.toMutableList())
-                            article.postValue(article.value)
+                            if (article.value == null) {
+                                article.value = data.datas.toMutableList()
+                                article.postValue(article.value)
+                            }else{
+                                article.value?.clear()
+                                article.value?.addAll(data.datas.toMutableList())
+                                article.postValue(article.value)
+                            }
                         }
                         else -> {
                             article.value?.addAll(data.datas.toMutableList())

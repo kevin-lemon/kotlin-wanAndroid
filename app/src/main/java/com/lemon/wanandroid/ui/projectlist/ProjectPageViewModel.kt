@@ -28,13 +28,13 @@ open class ProjectPageViewModel @Inject constructor(repository: ProjectRepositor
     open fun lazyInit(cid: Int) {
         this.cid = cid
         resourceProject.observeForever(resourceProjectObserver)
-        _pageNum.postValue(0)
+        _pageNum.postValue(1)
     }
 
     //false为加载更多，true为刷新获取第一页
     fun getProject(isRefresh: Boolean) {
         if (isRefresh) {
-            _pageNum.value = 0
+            _pageNum.value = 1
             resourceProject.observeForever(resourceProjectObserver)
         } else {
             if (isHaveMoreArticle) {
@@ -50,15 +50,17 @@ open class ProjectPageViewModel @Inject constructor(repository: ProjectRepositor
         when (resource.status) {
             Status.SUCCESS -> {
                 resource.data?.let { data ->
-                    if (projects.value == null) {
-                        projects.value = data.datas.toMutableList()
-                        projects.postValue(projects.value)
-                    }
+                    isHaveMoreArticle = data.curPage < data.pageCount
                     when (data.curPage) {
                         1 -> {
-                            projects.value?.clear()
-                            projects.value?.addAll(data.datas.toMutableList())
-                            projects.postValue(projects.value)
+                            if (projects.value == null) {
+                                projects.value = data.datas.toMutableList()
+                                projects.postValue(projects.value)
+                            }else{
+                                projects.value?.clear()
+                                projects.value?.addAll(data.datas.toMutableList())
+                                projects.postValue(projects.value)
+                            }
                         }
                         else -> {
                             projects.value?.addAll(data.datas.toMutableList())

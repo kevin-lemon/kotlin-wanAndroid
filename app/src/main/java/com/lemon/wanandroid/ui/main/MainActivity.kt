@@ -17,10 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 class MainActivity : BaseActivity() {
     private var currentNavController: LiveData<NavController>? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
-        super.onCreate(savedInstanceState)
-    }
+
     override fun getContentViewId(): Int {
         return R.layout.activity_main
     }

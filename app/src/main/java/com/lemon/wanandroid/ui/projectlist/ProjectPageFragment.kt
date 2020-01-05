@@ -14,7 +14,6 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.refreshlayout
 import kotlinx.android.synthetic.main.fragment_project_list.*
 import javax.inject.Inject
@@ -67,7 +66,7 @@ class ProjectListFragment : BaseFragment() {
             )
         )
         adapter = ProjectListAdapter(R.layout.item_project)
-        article_view?.adapter = adapter
+        project_view?.adapter = adapter
         refreshlayout.setRefreshHeader(DropBoxHeader(context))
         refreshlayout.setRefreshFooter(ClassicsFooter(context).setSpinnerStyle(SpinnerStyle.Scale))
     }

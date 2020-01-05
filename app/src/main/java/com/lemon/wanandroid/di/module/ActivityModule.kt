@@ -1,5 +1,6 @@
 package com.lemon.wanandroid.di.module
 
+import com.lemon.wanandroid.ui.detailsweb.DetailsWebActivity
 import com.lemon.wanandroid.ui.main.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -8,4 +9,7 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityModule {
     @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
     abstract fun contributeMainActivityAndroidInjector(): MainActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeDetailsWebActivityAndroidInjector(): DetailsWebActivity
 }

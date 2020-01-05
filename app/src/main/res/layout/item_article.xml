@@ -7,15 +7,16 @@
     android:background="@color/colorWhite">
     <TextView
         android:id="@+id/tv_home_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="@dimen/dp3"
         android:textColor="@color/color_ff323232"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:gravity="start|center_horizontal"
         android:textSize="@dimen/sp14"
-        android:maxLines="1"
+        android:maxLines="2"
         />
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/title_barrier"

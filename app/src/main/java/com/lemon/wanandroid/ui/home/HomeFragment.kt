@@ -54,7 +54,7 @@ class HomeFragment : BaseFragment() {
         })
         article_view?.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        project_view?.addItemDecoration(
+        article_view?.addItemDecoration(
             DividerItemDecoration(
                 context,
                 DividerItemDecoration.VERTICAL
