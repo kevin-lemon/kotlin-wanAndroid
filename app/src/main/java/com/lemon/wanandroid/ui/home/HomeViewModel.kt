@@ -18,7 +18,7 @@ open class HomeViewModel @Inject constructor(repository: HomeRepository) : ViewM
 
     private val _pageNum = MutableLiveData<Int>()
 
-    val pageNum: LiveData<Int>
+    private val pageNum: LiveData<Int>
         get() = _pageNum
     var isHaveMoreArticle = true
     private var resourceArticle: LiveData<Resource<Article>> = Transformations

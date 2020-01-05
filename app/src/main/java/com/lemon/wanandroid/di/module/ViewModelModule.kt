@@ -6,6 +6,7 @@ import com.lemon.wanandroid.di.ViewModelKey
 import com.lemon.wanandroid.factory.CustomViewModelFactory
 import com.lemon.wanandroid.ui.home.HomeViewModel
 import com.lemon.wanandroid.ui.project.ProjectViewModel
+import com.lemon.wanandroid.ui.projectlist.ProjectPageViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -22,6 +23,10 @@ abstract class ViewModelModule {
     @ViewModelKey(ProjectViewModel::class)
     abstract fun bindProjectViewModel(projectViewModel: ProjectViewModel): ViewModel
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProjectPageViewModel::class)
+    abstract fun bindProjectPageViewModel(projectPageViewModel: ProjectPageViewModel): ViewModel
     @Binds
     abstract fun bindViewModelFactory(viewModelFactory: CustomViewModelFactory): ViewModelProvider.Factory
 }

@@ -8,6 +8,7 @@ import com.lemon.wanandroid.bean.ProjectTab
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService{
     //--------- 首页API ----------//
@@ -22,6 +23,6 @@ interface ApiService{
     @GET("project/tree/json")
     fun getProjectTabs(): LiveData<ApiResponse<List<ProjectTab>>>
 
-    @GET("project/list/1/json?cid={Cid}")
-    fun getProject(@Path("Cid") cid : Int) : LiveData<ApiResponse<Project>>
+    @GET("project/list/{page}/json")
+    fun getProject(@Path("page") page:Int,@Query("cid") cid : Int) : LiveData<ApiResponse<Project>>
 }

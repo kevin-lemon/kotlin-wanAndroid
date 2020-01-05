@@ -38,7 +38,7 @@ class ProjectFragment : BaseFragment(){
                 var fragmentItems = mutableListOf<FragmentItem>()
                 forEach{projectTab->
                     fragmentItems.add(FragmentItem(projectTab.name,
-                        ProjectListFragment.newInstance(projectTab.courseId)))
+                        ProjectListFragment.newInstance(projectTab.id)))
                 }
                 adapter.setData(fragmentItems)
             }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp100"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/dp15"
+    android:background="@color/colorWhite">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/project_img"
+        android:layout_width="@dimen/dp120"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/project_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="@dimen/dp3"
+        android:textColor="@color/color_ff323232"
+        app:layout_constraintStart_toEndOf="@id/project_img"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="start|center_horizontal"
+        android:textSize="@dimen/sp14"
+        android:maxLines="1"
+        />
+    <TextView
+        android:id="@+id/project_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/project_img"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="@dimen/dp5"
+        android:layout_marginTop="@dimen/dp5"
+        android:textSize="@dimen/sp12" />
+    <TextView
+        android:id="@+id/project_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp12"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginStart="@dimen/dp5"
+        app:layout_constraintStart_toEndOf="@id/project_author"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

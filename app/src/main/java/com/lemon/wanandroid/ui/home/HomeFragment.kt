@@ -4,6 +4,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 import com.lemon.wanandroid.BaseFragment
@@ -17,6 +18,8 @@ import com.scwang.smartrefresh.layout.constant.SpinnerStyle
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.refreshlayout
+import kotlinx.android.synthetic.main.fragment_project_list.*
 import javax.inject.Inject
 import kotlin.math.abs
 
@@ -51,6 +54,12 @@ class HomeFragment : BaseFragment() {
         })
         article_view?.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        project_view?.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
         adapter =
             HomeArticleAdapter(R.layout.item_article)
         article_view?.adapter = adapter
@@ -89,9 +98,9 @@ class HomeFragment : BaseFragment() {
         viewModel.article.observe(this) {
             adapter.setNewData(it)
             refreshlayout?.finishRefresh()
-            if (viewModel.isHaveMoreArticle){
+            if (viewModel.isHaveMoreArticle) {
                 refreshlayout?.finishLoadMore()
-            }else{
+            } else {
                 refreshlayout.finishLoadMoreWithNoMoreData()
             }
             adapter.setOnItemClickListener { adapter, view, position ->

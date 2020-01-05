@@ -21,10 +21,10 @@ class ProjectRepository @Inject constructor(private val apiService: ApiService) 
         }.asLiveData()
     }
 
-    fun getProject(cid: Int) : MutableLiveData<Resource<Project>>{
+    fun getProject(page: Int,cid: Int) : MutableLiveData<Resource<Project>>{
         return object : NetWorkResource<Project>(){
             override fun createCall(): LiveData<ApiResponse<Project>> {
-                return apiService.getProject(cid)
+                return apiService.getProject(page,cid)
             }
         }.asMutableLiveData()
     }
