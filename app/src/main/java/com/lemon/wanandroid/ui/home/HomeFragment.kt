@@ -1,5 +1,6 @@
 package com.lemon.wanandroid.ui.home
 
+import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +13,7 @@ import com.lemon.wanandroid.R
 import com.lemon.wanandroid.WanApp
 import com.lemon.wanandroid.utils.GlideImageLoader
 import com.lemon.wanandroid.adapter.HomeArticleAdapter
+import com.lemon.wanandroid.ui.detailsweb.DetailsWebActivity
 import com.scwang.smartrefresh.header.DropBoxHeader
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle
@@ -105,6 +107,7 @@ class HomeFragment : BaseFragment() {
             }
             adapter.setOnItemClickListener { adapter, view, position ->
                 val itemBean = it?.get(position)
+                DetailsWebActivity.start(activity,bundle = Bundle())
             }
         }
     }
