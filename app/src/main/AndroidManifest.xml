@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.detailsweb.DetailsWebActivity"
+            android:name=".ui.detailsweb.DetailsWebFragment"
             android:theme="@style/FullScreenStyle"/>
     </application>
 

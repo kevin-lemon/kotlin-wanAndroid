@@ -6,6 +6,18 @@
     <fragment
         android:id="@+id/projectFragment"
         android:name="com.lemon.wanandroid.ui.project.ProjectFragment"
-        android:label="projectFragment"
-        />
+        android:label="projectFragment">
+        <action
+            android:id="@+id/action_to_detailsWebFragment"
+            app:destination="@id/detailsWebFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsWebFragment"
+        android:name="com.lemon.wanandroid.ui.detailsweb.DetailsWebFragment"
+        android:label="SystemDetailsFragment">
+    <argument
+        android:name="url"
+        android:defaultValue=" "
+        app:argType="string" />
+    </fragment>
 </navigation>

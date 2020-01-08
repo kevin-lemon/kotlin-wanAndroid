@@ -27,6 +27,8 @@ abstract class BaseFragment : Fragment() {
             mContentView  = inflater.inflate(getContentViewId(), container, false)
             isAlreadyView = false
         }
+        val parent :ViewGroup? = mContentView?.parent as ViewGroup?
+        parent?.removeView(mContentView)
         return mContentView
     }
 

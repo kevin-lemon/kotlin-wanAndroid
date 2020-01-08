@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
@@ -13,7 +14,6 @@ import com.lemon.wanandroid.R
 import com.lemon.wanandroid.WanApp
 import com.lemon.wanandroid.utils.GlideImageLoader
 import com.lemon.wanandroid.adapter.HomeArticleAdapter
-import com.lemon.wanandroid.ui.detailsweb.DetailsWebActivity
 import com.scwang.smartrefresh.header.DropBoxHeader
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle
@@ -21,7 +21,6 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.refreshlayout
-import kotlinx.android.synthetic.main.fragment_project_list.*
 import javax.inject.Inject
 import kotlin.math.abs
 
@@ -107,7 +106,11 @@ class HomeFragment : BaseFragment() {
             }
             adapter.setOnItemClickListener { adapter, view, position ->
                 val itemBean = it?.get(position)
-                DetailsWebActivity.start(activity,bundle = Bundle())
+                itemBean?.let { it ->
+                    val action = HomeFragmentDirections.actionToDetailsWebFragment(it.link)
+                    Navigation.findNavController(getView()!!).navigate(action)
+                }
+
             }
         }
     }

@@ -3,10 +3,12 @@ package com.lemon.wanandroid.ui.project
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.navigation.Navigation
 import com.lemon.wanandroid.BaseFragment
 import com.lemon.wanandroid.R
 import com.lemon.wanandroid.adapter.ProjectPagerAdapter
 import com.lemon.wanandroid.bean.FragmentItem
+import com.lemon.wanandroid.ui.home.HomeFragmentDirections
 import com.lemon.wanandroid.ui.projectlist.ProjectListFragment
 import kotlinx.android.synthetic.main.fragment_project.*
 import javax.inject.Inject

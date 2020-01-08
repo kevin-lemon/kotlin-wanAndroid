@@ -4,11 +4,13 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lemon.wanandroid.BaseFragment
 import com.lemon.wanandroid.R
 import com.lemon.wanandroid.adapter.ProjectListAdapter
+import com.lemon.wanandroid.ui.project.ProjectFragmentDirections
 import com.scwang.smartrefresh.header.DropBoxHeader
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle
@@ -82,6 +84,8 @@ class ProjectListFragment : BaseFragment() {
             }
             adapter.setOnItemClickListener { adapter, view, position ->
                 val itemBean = it?.get(position)
+                val action = ProjectFragmentDirections.actionToDetailsWebFragment()
+                Navigation.findNavController(getView()!!).navigate(action)
             }
         }
     }

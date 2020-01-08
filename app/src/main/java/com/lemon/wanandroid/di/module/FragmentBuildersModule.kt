@@ -1,6 +1,7 @@
 package com.lemon.wanandroid.di.module
 
 import com.lemon.wanandroid.ui.article.ArticleFragment
+import com.lemon.wanandroid.ui.detailsweb.DetailsWebFragment
 import com.lemon.wanandroid.ui.home.HomeFragment
 import com.lemon.wanandroid.ui.navigation.NavigationFragment
 import com.lemon.wanandroid.ui.project.ProjectFragment
@@ -32,5 +33,9 @@ abstract class FragmentBuildersModule {
     abstract fun contributeProjectListFragment(): ProjectListFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeSystemDetailsFragmentFragment(): SystemDetailsFragment
+    abstract fun contributeSystemDetailsFragment(): SystemDetailsFragment
+
+
+    @ContributesAndroidInjector
+    abstract fun contributeDetailsWebFragment(): DetailsWebFragment
 }
