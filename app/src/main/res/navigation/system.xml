@@ -7,5 +7,15 @@
         android:id="@+id/systemFragment"
         android:name="com.lemon.wanandroid.ui.system.SystemFragment"
         android:label="systemFragment"
-        />
+        >
+        <action
+            android:id="@+id/action_systemFragment_to_systemDetailsFragment"
+            app:destination="@id/systemDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/systemDetailsFragment"
+        android:name="com.lemon.wanandroid.ui.systemdetails.SystemDetailsFragment"
+        android:label="SystemDetailsFragment">
+        <argument android:name="cid" android:defaultValue="0" app:argType="integer"/>
+    </fragment>
 </navigation>

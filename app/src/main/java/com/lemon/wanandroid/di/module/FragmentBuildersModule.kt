@@ -6,6 +6,7 @@ import com.lemon.wanandroid.ui.navigation.NavigationFragment
 import com.lemon.wanandroid.ui.project.ProjectFragment
 import com.lemon.wanandroid.ui.projectlist.ProjectListFragment
 import com.lemon.wanandroid.ui.system.SystemFragment
+import com.lemon.wanandroid.ui.systemdetails.SystemDetailsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -29,4 +30,7 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeProjectListFragment(): ProjectListFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeSystemDetailsFragmentFragment(): SystemDetailsFragment
 }
