@@ -24,8 +24,12 @@ class DetailsWebFragment :BaseFragment(){
             author = DetailsWebFragmentArgs.fromBundle(it).author
             tool_bar.title = title
             tool_bar.setNavigationOnClickListener { 
-                view?.let { it ->
-                    Navigation.findNavController(it).popBackStack() 
+                view?.let {
+                    if(web_view.canGoBack()){
+                        web_view.goBack()
+                    }else{
+                        Navigation.findNavController(it).popBackStack()
+                    }
                 }
             }
             web_view.setWebViewCallback(object : DetailsWebView.OnWebViewCallback{
@@ -49,20 +53,7 @@ class DetailsWebFragment :BaseFragment(){
                 }
 
             })
-            val navController = NavHostController(context!!)
-            navController.enableOnBackPressed(false)
-            Navigation.setViewNavController(view!!,navController)
             web_view.loadUrl(url)
-            view?.setOnKeyListener { v, keyCode, event ->
-                if (event.action == KeyEvent.ACTION_DOWN  && keyCode == KeyEvent.KEYCODE_BACK){
-                    if (web_view.canGoBack()){
-                        web_view.goBack()
-                        return@setOnKeyListener true
-                    }
-                    return@setOnKeyListener false
-                }
-                false
-            }
         }
     }
 
