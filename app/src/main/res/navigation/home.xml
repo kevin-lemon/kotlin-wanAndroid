@@ -19,6 +19,17 @@
         <argument
             android:name="url"
             android:defaultValue=" "
-            app:argType="string" />
+            app:argType="string"
+            />
+        <argument
+            android:name="title"
+            android:defaultValue="@string/details_title"
+            app:argType="string"
+            />
+        <argument
+            android:name="author"
+            android:defaultValue=" "
+            app:argType="string"
+            />
     </fragment>
 </navigation>

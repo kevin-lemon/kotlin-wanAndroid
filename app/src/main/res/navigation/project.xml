@@ -15,9 +15,20 @@
         android:id="@+id/detailsWebFragment"
         android:name="com.lemon.wanandroid.ui.detailsweb.DetailsWebFragment"
         android:label="SystemDetailsFragment">
-    <argument
-        android:name="url"
-        android:defaultValue=" "
-        app:argType="string" />
+        <argument
+            android:name="url"
+            android:defaultValue=" "
+            app:argType="string"
+            />
+        <argument
+            android:name="title"
+            android:defaultValue="@string/details_title"
+            app:argType="string"
+            />
+        <argument
+            android:name="author"
+            android:defaultValue=" "
+            app:argType="string"
+            />
     </fragment>
 </navigation>

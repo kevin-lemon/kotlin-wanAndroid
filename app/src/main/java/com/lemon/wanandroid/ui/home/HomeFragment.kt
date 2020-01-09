@@ -107,7 +107,7 @@ class HomeFragment : BaseFragment() {
             adapter.setOnItemClickListener { adapter, view, position ->
                 val itemBean = it?.get(position)
                 itemBean?.let { it ->
-                    val action = HomeFragmentDirections.actionToDetailsWebFragment(it.link)
+                    val action = HomeFragmentDirections.actionToDetailsWebFragment(it.link,it.title,it.author)
                     Navigation.findNavController(getView()!!).navigate(action)
                 }
 

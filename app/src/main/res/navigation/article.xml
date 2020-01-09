@@ -7,5 +7,29 @@
         android:id="@+id/articleFragment"
         android:name="com.lemon.wanandroid.ui.article.ArticleFragment"
         android:label="articleFragment"
-        />
+        >
+    <action
+        android:id="@+id/action_to_detailsWebFragment"
+        app:destination="@id/detailsWebFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsWebFragment"
+        android:name="com.lemon.wanandroid.ui.detailsweb.DetailsWebFragment"
+        android:label="SystemDetailsFragment">
+        <argument
+            android:name="url"
+            android:defaultValue=" "
+            app:argType="string"
+            />
+        <argument
+            android:name="title"
+            android:defaultValue="@string/details_title"
+            app:argType="string"
+            />
+        <argument
+            android:name="author"
+            android:defaultValue=" "
+            app:argType="string"
+            />
+    </fragment>
 </navigation>
