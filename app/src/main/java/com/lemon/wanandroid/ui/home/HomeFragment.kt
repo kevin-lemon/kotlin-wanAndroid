@@ -92,6 +92,10 @@ class HomeFragment : BaseFragment() {
                 }
                 banner_view.setOnBannerListener { position ->
                     val banner = this[position]
+                    banner?.let { it ->
+                        val action = HomeFragmentDirections.actionToDetailsWebFragment(it.url,it.title,"")
+                        Navigation.findNavController(getView()!!).navigate(action)
+                    }
                 }
             }
 

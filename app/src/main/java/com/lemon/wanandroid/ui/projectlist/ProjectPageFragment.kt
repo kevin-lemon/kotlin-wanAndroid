@@ -84,8 +84,10 @@ class ProjectListFragment : BaseFragment() {
             }
             adapter.setOnItemClickListener { adapter, view, position ->
                 val itemBean = it?.get(position)
-                val action = ProjectFragmentDirections.actionToDetailsWebFragment()
-                Navigation.findNavController(getView()!!).navigate(action)
+                itemBean?.let {it->
+                    val action = ProjectFragmentDirections.actionToDetailsWebFragment(it.link,it.title,it.author)
+                    Navigation.findNavController(getView()!!).navigate(action)
+                }
             }
         }
     }

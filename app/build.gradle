@@ -47,6 +47,7 @@ dependencies {
     implementation deps.support.core_ktx
     implementation deps.support.multidex
     implementation deps.support.design
+    implementation deps.support.webkit
     implementation deps.kotlin.kotlinx_coroutines
     implementation deps.retrofit.retrofit2
     implementation deps.retrofit.converter_gson

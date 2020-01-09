@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/detailsWebFragment"
         android:name="com.lemon.wanandroid.ui.detailsweb.DetailsWebFragment"
-        android:label="SystemDetailsFragment">
+        android:label="DetailsWebFragment">
         <argument
             android:name="url"
             android:defaultValue=" "
@@ -22,7 +22,7 @@
             />
         <argument
             android:name="title"
-            android:defaultValue="@string/details_title"
+            android:defaultValue="详情"
             app:argType="string"
             />
         <argument
