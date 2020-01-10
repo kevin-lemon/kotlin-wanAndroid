@@ -3,13 +3,11 @@ package com.lemon.wanandroid.ui.project
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
-import androidx.navigation.Navigation
 import com.lemon.wanandroid.BaseFragment
 import com.lemon.wanandroid.R
 import com.lemon.wanandroid.adapter.ProjectPagerAdapter
 import com.lemon.wanandroid.bean.FragmentItem
-import com.lemon.wanandroid.ui.home.HomeFragmentDirections
-import com.lemon.wanandroid.ui.projectlist.ProjectListFragment
+import com.lemon.wanandroid.ui.projectpage.ProjectPageFragment
 import kotlinx.android.synthetic.main.fragment_project.*
 import javax.inject.Inject
 
@@ -37,10 +35,10 @@ class ProjectFragment : BaseFragment(){
     override fun initData() {
         viewModel.projectTabs.observe(this){
             it.data?.run{
-                var fragmentItems = mutableListOf<FragmentItem>()
+                val fragmentItems = mutableListOf<FragmentItem>()
                 forEach{projectTab->
                     fragmentItems.add(FragmentItem(projectTab.name,
-                        ProjectListFragment.newInstance(projectTab.id)))
+                        ProjectPageFragment.newInstance(projectTab.id)))
                 }
                 adapter.setData(fragmentItems)
             }

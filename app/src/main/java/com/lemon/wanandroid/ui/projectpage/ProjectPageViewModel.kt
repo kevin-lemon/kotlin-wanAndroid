@@ -1,4 +1,4 @@
-package com.lemon.wanandroid.ui.projectlist
+package com.lemon.wanandroid.ui.projectpage
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

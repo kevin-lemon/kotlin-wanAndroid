@@ -4,9 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.lemon.wanandroid.di.ViewModelKey
 import com.lemon.wanandroid.factory.CustomViewModelFactory
+import com.lemon.wanandroid.ui.article.ArticleViewModel
+import com.lemon.wanandroid.ui.articlepage.ArticlePageViewModel
 import com.lemon.wanandroid.ui.home.HomeViewModel
 import com.lemon.wanandroid.ui.project.ProjectViewModel
-import com.lemon.wanandroid.ui.projectlist.ProjectPageViewModel
+import com.lemon.wanandroid.ui.projectpage.ProjectPageViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -27,6 +29,16 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ProjectPageViewModel::class)
     abstract fun bindProjectPageViewModel(projectPageViewModel: ProjectPageViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ArticleViewModel::class)
+    abstract fun bindArticleViewModel(articleViewModel: ArticleViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ArticlePageViewModel::class)
+    abstract fun bindArticlePageViewModel(articleListViewModel: ArticlePageViewModel): ViewModel
     @Binds
     abstract fun bindViewModelFactory(viewModelFactory: CustomViewModelFactory): ViewModelProvider.Factory
 }

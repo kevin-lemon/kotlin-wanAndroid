@@ -1,4 +1,4 @@
-package com.lemon.wanandroid.ui.projectlist
+package com.lemon.wanandroid.ui.articlepage
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
@@ -9,41 +9,40 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lemon.wanandroid.BaseFragment
 import com.lemon.wanandroid.R
-import com.lemon.wanandroid.adapter.ProjectListAdapter
-import com.lemon.wanandroid.ui.project.ProjectFragmentDirections
+import com.lemon.wanandroid.adapter.ArticleListAdapter
+import com.lemon.wanandroid.adapter.ArticlePageAdapter
+import com.lemon.wanandroid.constant.Constants.Companion.CID
+import com.lemon.wanandroid.ui.article.ArticleFragmentDirections
 import com.scwang.smartrefresh.header.DropBoxHeader
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
-import kotlinx.android.synthetic.main.fragment_home.refreshlayout
-import kotlinx.android.synthetic.main.fragment_project_list.*
+import kotlinx.android.synthetic.main.fragment_article_page.*
 import javax.inject.Inject
 
-private const val CID = "cid"
 
-class ProjectListFragment : BaseFragment() {
+private const val ID = "id"
+class ArticlePageFragment : BaseFragment(){
 
-    private lateinit var adapter: ProjectListAdapter
+    private lateinit var adapter: ArticleListAdapter
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: ProjectPageViewModel by viewModels {
+    private val viewModel: ArticlePageViewModel by viewModels {
         viewModelFactory
     }
-
     companion object {
-        fun newInstance(cid: Int): ProjectListFragment {
-            return ProjectListFragment().apply {
+        fun newInstance(id : Int): ArticlePageFragment {
+            return ArticlePageFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(CID, cid)
+                    putInt(ID, id)
                 }
             }
         }
     }
-
     override fun getContentViewId(): Int {
-        return R.layout.fragment_project_list
+        return R.layout.fragment_article_page
     }
 
     override fun initView() {
@@ -51,11 +50,11 @@ class ProjectListFragment : BaseFragment() {
         refreshlayout?.setReboundDuration(300)
         refreshlayout?.setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
             override fun onLoadMore(refreshLayout: RefreshLayout) {
-                viewModel.getProject(false)
+                viewModel.getArticleData(false)
             }
 
             override fun onRefresh(refreshLayout: RefreshLayout) {
-                viewModel.getProject(true)
+                viewModel.getArticleData(true)
             }
 
         })
@@ -67,17 +66,17 @@ class ProjectListFragment : BaseFragment() {
                 DividerItemDecoration.VERTICAL
             )
         )
-        adapter = ProjectListAdapter(R.layout.item_project)
+        adapter = ArticleListAdapter(R.layout.item_public_article)
         project_view?.adapter = adapter
         refreshlayout.setRefreshHeader(DropBoxHeader(context))
         refreshlayout.setRefreshFooter(ClassicsFooter(context).setSpinnerStyle(SpinnerStyle.Scale))
     }
 
     override fun initData() {
-        viewModel.projects.observe(this) {
+        viewModel.articles.observe(this){
             adapter.setNewData(it)
             refreshlayout?.finishRefresh()
-            if (viewModel.isHaveMoreArticle) {
+            if (viewModel.isHaveMoreData) {
                 refreshlayout?.finishLoadMore()
             } else {
                 refreshlayout.finishLoadMoreWithNoMoreData()
@@ -85,7 +84,7 @@ class ProjectListFragment : BaseFragment() {
             adapter.setOnItemClickListener { adapter, view, position ->
                 val itemBean = it?.get(position)
                 itemBean?.let {it->
-                    val action = ProjectFragmentDirections.actionToDetailsWebFragment(it.link,it.title,it.author)
+                    val action = ArticleFragmentDirections.actionToDetailsWebFragment(it.link,it.title,it.author)
                     Navigation.findNavController(getView()!!).navigate(action)
                 }
             }
@@ -99,7 +98,7 @@ class ProjectListFragment : BaseFragment() {
 
     private fun lazyInitData() {
         arguments?.let {
-            viewModel.lazyInit(it.getInt(CID))
+            viewModel.lazyInit(it.getInt(ID))
         }
     }
 }

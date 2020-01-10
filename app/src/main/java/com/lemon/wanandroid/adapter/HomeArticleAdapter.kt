@@ -1,5 +1,6 @@
 package com.lemon.wanandroid.adapter
 
+import android.text.Html
 import android.text.TextUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -21,7 +22,7 @@ class HomeArticleAdapter(layoutResId: Int) :
         }
         helper?.run {
             item?.run {
-                setText(R.id.tv_home_title, title)
+                setText(R.id.tv_home_title, Html.fromHtml(title))
                 setText(R.id.tv_home_author, author)
                 setGone(R.id.tv_home_author,!TextUtils.isEmpty(author))
             setText(

@@ -1,10 +1,7 @@
 package com.lemon.wanandroid.api
 
 import androidx.lifecycle.LiveData
-import com.lemon.wanandroid.bean.Article
-import com.lemon.wanandroid.bean.Banner
-import com.lemon.wanandroid.bean.Project
-import com.lemon.wanandroid.bean.ProjectTab
+import com.lemon.wanandroid.bean.*
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -25,4 +22,13 @@ interface ApiService{
 
     @GET("project/list/{page}/json")
     fun getProject(@Path("page") page:Int,@Query("cid") cid : Int) : LiveData<ApiResponse<Project>>
+
+    //--------- 项目end ----------//
+    @GET("wxarticle/chapters/json")
+    fun getPublicArticle() : LiveData<ApiResponse<List<PublicArticle>>>
+
+    @GET("wxarticle/list/{ID}/{page}/json")
+    fun getPublicArticleData(@Path("page") page:Int,@Path("ID") id:Int) : LiveData<ApiResponse<PublicArticleData>>
+    //--------- 公众号API ----------//
+    //--------- 公众号end ----------//
 }
