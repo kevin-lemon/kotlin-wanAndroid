@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.lemon.wanandroid.BaseFragment
 import com.lemon.wanandroid.R
 import com.lemon.wanandroid.adapter.ProjectListAdapter
-import com.lemon.wanandroid.constant.Constants
-import com.lemon.wanandroid.constant.Constants.Companion.CID
 import com.lemon.wanandroid.ui.project.ProjectFragmentDirections
 import com.scwang.smartrefresh.header.DropBoxHeader
 import com.scwang.smartrefresh.layout.api.RefreshLayout

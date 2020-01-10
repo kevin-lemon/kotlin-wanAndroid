@@ -8,7 +8,6 @@ import com.lemon.wanandroid.R
 import com.lemon.wanandroid.adapter.ArticlePageAdapter
 import com.lemon.wanandroid.bean.FragmentItem
 import com.lemon.wanandroid.ui.articlepage.ArticlePageFragment
-import com.lemon.wanandroid.ui.projectpage.ProjectPageFragment
 import kotlinx.android.synthetic.main.fragment_article.*
 import javax.inject.Inject
 

@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.lemon.wanandroid.BaseFragment
 import com.lemon.wanandroid.R
 import com.lemon.wanandroid.adapter.ArticleListAdapter
-import com.lemon.wanandroid.adapter.ArticlePageAdapter
-import com.lemon.wanandroid.constant.Constants.Companion.CID
 import com.lemon.wanandroid.ui.article.ArticleFragmentDirections
 import com.scwang.smartrefresh.header.DropBoxHeader
 import com.scwang.smartrefresh.layout.api.RefreshLayout
