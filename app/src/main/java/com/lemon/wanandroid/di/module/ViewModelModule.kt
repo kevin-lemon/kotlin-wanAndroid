@@ -7,6 +7,7 @@ import com.lemon.wanandroid.factory.CustomViewModelFactory
 import com.lemon.wanandroid.ui.article.ArticleViewModel
 import com.lemon.wanandroid.ui.articlepage.ArticlePageViewModel
 import com.lemon.wanandroid.ui.home.HomeViewModel
+import com.lemon.wanandroid.ui.navigation.NavigationViewModel
 import com.lemon.wanandroid.ui.project.ProjectViewModel
 import com.lemon.wanandroid.ui.projectpage.ProjectPageViewModel
 import com.lemon.wanandroid.ui.system.SystemViewModel
@@ -51,6 +52,12 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SystemDetailsViewModel::class)
     abstract fun bindSystemDetailsViewModel(systemDetailsViewModel: SystemDetailsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NavigationViewModel::class)
+    abstract fun bindNavigationViewModel(navigationViewModel: NavigationViewModel): ViewModel
+
     @Binds
     abstract fun bindViewModelFactory(viewModelFactory: CustomViewModelFactory): ViewModelProvider.Factory
 }

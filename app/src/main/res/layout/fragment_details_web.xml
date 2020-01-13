@@ -15,7 +15,7 @@
         app:titleTextColor="@color/colorWhite"
         app:navigationIcon="@drawable/ic_back"
         />
-    <com.lemon.wanandroid.view.DetailsWebView
+    <FrameLayout
         android:id="@+id/web_view"
         android:layout_width="0dp"
         android:layout_height="0dp"

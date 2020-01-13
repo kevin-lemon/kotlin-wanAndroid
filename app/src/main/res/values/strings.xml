@@ -6,4 +6,6 @@
     <string name="item_system">体系</string>
     <string name="item_navigation">导航</string>
     <string name="details_title">详情</string>
+    <string name="web_error">加载网页失败啦，请重试，如多次失败，可能地址已经更换。</string>
+    <string name="retry">重试</string>
 </resources>
