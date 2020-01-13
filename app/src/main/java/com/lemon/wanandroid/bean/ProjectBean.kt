@@ -1,6 +1,6 @@
 package com.lemon.wanandroid.bean
 
-data class Project(
+data class ProjectBean(
     var curPage: Int,
     var datas: List<Data>,
     var offset: Int,

@@ -1,6 +1,6 @@
 package com.lemon.wanandroid.bean
 
-data class ProjectTab(
+data class ProjectTabBean(
     var children: List<Any>,
     var courseId: Int,
     var id: Int,

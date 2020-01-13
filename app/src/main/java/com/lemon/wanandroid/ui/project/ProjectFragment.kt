@@ -6,7 +6,7 @@ import androidx.lifecycle.observe
 import com.lemon.wanandroid.BaseFragment
 import com.lemon.wanandroid.R
 import com.lemon.wanandroid.adapter.ProjectPagerAdapter
-import com.lemon.wanandroid.bean.FragmentItem
+import com.lemon.wanandroid.bean.FragmentItemBean
 import com.lemon.wanandroid.ui.projectpage.ProjectPageFragment
 import kotlinx.android.synthetic.main.fragment_project.*
 import javax.inject.Inject
@@ -20,7 +20,7 @@ class ProjectFragment : BaseFragment(){
     private val viewModel: ProjectViewModel by viewModels {
         viewModelFactory
     }
-    private var fragmentItems = mutableListOf<FragmentItem>()
+    private var fragmentItems = mutableListOf<FragmentItemBean>()
     private lateinit var adapter: ProjectPagerAdapter
     override fun getContentViewId(): Int {
         return R.layout.fragment_project
@@ -35,9 +35,9 @@ class ProjectFragment : BaseFragment(){
     override fun initData() {
         viewModel.projectTabs.observe(this){
             it.data?.run{
-                val fragmentItems = mutableListOf<FragmentItem>()
+                val fragmentItems = mutableListOf<FragmentItemBean>()
                 forEach{projectTab->
-                    fragmentItems.add(FragmentItem(projectTab.name,
+                    fragmentItems.add(FragmentItemBean(projectTab.name,
                         ProjectPageFragment.newInstance(projectTab.id)))
                 }
                 adapter.setData(fragmentItems)

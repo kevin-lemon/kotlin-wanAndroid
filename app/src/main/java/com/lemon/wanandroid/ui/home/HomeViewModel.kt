@@ -1,8 +1,8 @@
 package com.lemon.wanandroid.ui.home
 
 import androidx.lifecycle.*
-import com.lemon.wanandroid.bean.Article
-import com.lemon.wanandroid.bean.Banner
+import com.lemon.wanandroid.bean.ArticleBean
+import com.lemon.wanandroid.bean.BannerBean
 import com.lemon.wanandroid.bean.Resource
 import com.lemon.wanandroid.bean.Status
 import com.lemon.wanandroid.repository.HomeRepository
@@ -12,23 +12,23 @@ import javax.inject.Inject
  * Created by Lemon on 2019/11/29.
  */
 open class HomeViewModel @Inject constructor(repository: HomeRepository) : ViewModel() {
-    var banner: LiveData<Resource<List<Banner>>> = MutableLiveData()
+    var banner: LiveData<Resource<List<BannerBean>>> = MutableLiveData()
 
-    var article: MutableLiveData<MutableList<Article.Data>> = MutableLiveData()
+    var article: MutableLiveData<MutableList<ArticleBean.Data>> = MutableLiveData()
 
     private val _pageNum = MutableLiveData<Int>()
 
     private val pageNum: LiveData<Int>
         get() = _pageNum
     var isHaveMoreArticle = true
-    private var resourceArticle: LiveData<Resource<Article>> = Transformations
+    private var resourceArticle: LiveData<Resource<ArticleBean>> = Transformations
         .switchMap(pageNum) { pageNum ->
             pageNum?.let {
                 repository.getArticle(it)
             }
         }
 
-    private val resourceArticleObserver = Observer<Resource<Article>> { resource ->
+    private val resourceArticleObserver = Observer<Resource<ArticleBean>> { resource ->
         when (resource.status) {
             Status.SUCCESS -> {
                 resource.data?.let { data ->

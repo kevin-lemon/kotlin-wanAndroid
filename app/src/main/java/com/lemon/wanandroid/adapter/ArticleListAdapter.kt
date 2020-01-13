@@ -5,13 +5,12 @@ import android.text.TextUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.lemon.wanandroid.R
-import com.lemon.wanandroid.bean.PublicArticleData
-import com.lemon.wanandroid.glide.GlideApp
+import com.lemon.wanandroid.bean.PublicArticleDataBean
 import com.lemon.wanandroid.utils.format
 
 class ArticleListAdapter(layoutResId: Int) :
-    BaseQuickAdapter<PublicArticleData.Data, BaseViewHolder>(layoutResId) {
-    override fun convert(helper: BaseViewHolder, item: PublicArticleData.Data?) {
+    BaseQuickAdapter<PublicArticleDataBean.Data, BaseViewHolder>(layoutResId) {
+    override fun convert(helper: BaseViewHolder, item: PublicArticleDataBean.Data?) {
         helper?.run {
             item?.run {
                 setText(R.id.tv_article_title, Html.fromHtml(title))

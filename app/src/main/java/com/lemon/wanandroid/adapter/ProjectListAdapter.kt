@@ -4,13 +4,13 @@ import android.text.TextUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.lemon.wanandroid.R
-import com.lemon.wanandroid.bean.Project
+import com.lemon.wanandroid.bean.ProjectBean
 import com.lemon.wanandroid.glide.GlideApp
 import com.lemon.wanandroid.utils.format
 
 class ProjectListAdapter(layoutResId: Int) :
-    BaseQuickAdapter<Project.Data, BaseViewHolder>(layoutResId) {
-    override fun convert(helper: BaseViewHolder, item: Project.Data?) {
+    BaseQuickAdapter<ProjectBean.Data, BaseViewHolder>(layoutResId) {
+    override fun convert(helper: BaseViewHolder, item: ProjectBean.Data?) {
         helper?.run {
             item?.run {
                 setText(R.id.project_title, title)

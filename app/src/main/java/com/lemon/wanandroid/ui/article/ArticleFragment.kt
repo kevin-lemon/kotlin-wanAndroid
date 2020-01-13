@@ -6,7 +6,7 @@ import androidx.lifecycle.observe
 import com.lemon.wanandroid.BaseFragment
 import com.lemon.wanandroid.R
 import com.lemon.wanandroid.adapter.ArticlePageAdapter
-import com.lemon.wanandroid.bean.FragmentItem
+import com.lemon.wanandroid.bean.FragmentItemBean
 import com.lemon.wanandroid.ui.articlepage.ArticlePageFragment
 import kotlinx.android.synthetic.main.fragment_article.*
 import javax.inject.Inject
@@ -19,7 +19,7 @@ class ArticleFragment : BaseFragment(){
     private val viewModel: ArticleViewModel by viewModels {
         viewModelFactory
     }
-    private var fragmentItems = mutableListOf<FragmentItem>()
+    private var fragmentItems = mutableListOf<FragmentItemBean>()
     private lateinit var adapter: ArticlePageAdapter
     override fun getContentViewId(): Int {
         return R.layout.fragment_article
@@ -34,9 +34,9 @@ class ArticleFragment : BaseFragment(){
     override fun initData() {
         viewModel.articleTabs.observe(this){
             it.data?.run{
-                val fragmentItems = mutableListOf<FragmentItem>()
+                val fragmentItems = mutableListOf<FragmentItemBean>()
                 forEach{articleTab->
-                    fragmentItems.add(FragmentItem(articleTab.name,
+                    fragmentItems.add(FragmentItemBean(articleTab.name,
                         ArticlePageFragment.newInstance(articleTab.id)))
                 }
                 adapter.setData(fragmentItems)

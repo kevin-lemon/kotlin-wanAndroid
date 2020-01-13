@@ -4,10 +4,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.lemon.wanandroid.bean.FragmentItem
+import com.lemon.wanandroid.bean.FragmentItemBean
 
 
-class ProjectPagerAdapter(fm: FragmentManager, var fragmentItems: List<FragmentItem>) :FragmentPagerAdapter(fm,
+class ProjectPagerAdapter(fm: FragmentManager, var fragmentItems: List<FragmentItemBean>) :FragmentPagerAdapter(fm,
     BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
 ){
 
@@ -23,7 +23,7 @@ class ProjectPagerAdapter(fm: FragmentManager, var fragmentItems: List<FragmentI
         return fragmentItems[position].name
     }
 
-    fun setData(list: List<FragmentItem>){
+    fun setData(list: List<FragmentItemBean>){
         fragmentItems = list
         notifyDataSetChanged()
     }

@@ -1,6 +1,6 @@
 package com.lemon.wanandroid.bean
 
-data class Banner(
+data class BannerBean(
     var desc: String,
     var id: Int,
     var imagePath: String,

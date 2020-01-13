@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.lemon.wanandroid.bean.Project
+import com.lemon.wanandroid.bean.ProjectBean
 import com.lemon.wanandroid.bean.Resource
 import com.lemon.wanandroid.bean.Status
 import com.lemon.wanandroid.repository.ProjectRepository
@@ -13,12 +13,12 @@ import javax.inject.Inject
 
 open class ProjectPageViewModel @Inject constructor(repository: ProjectRepository) : ViewModel() {
     private var cid: Int = 0
-    var projects : MutableLiveData<MutableList<Project.Data>> = MutableLiveData()
+    var projects : MutableLiveData<MutableList<ProjectBean.Data>> = MutableLiveData()
     private val _pageNum = MutableLiveData<Int>()
     var isHaveMoreArticle = true
     val pageNum: LiveData<Int>
         get() = _pageNum
-    var resourceProject: LiveData<Resource<Project>> = Transformations
+    var resourceProject: LiveData<Resource<ProjectBean>> = Transformations
         .switchMap(pageNum) { pageNum ->
             pageNum?.let {
                 repository.getProject(it,cid )
@@ -46,7 +46,7 @@ open class ProjectPageViewModel @Inject constructor(repository: ProjectRepositor
         }
     }
 
-    private val resourceProjectObserver = Observer<Resource<Project>> { resource ->
+    private val resourceProjectObserver = Observer<Resource<ProjectBean>> { resource ->
         when (resource.status) {
             Status.SUCCESS -> {
                 resource.data?.let { data ->

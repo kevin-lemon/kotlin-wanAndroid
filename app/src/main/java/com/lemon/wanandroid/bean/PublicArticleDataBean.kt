@@ -1,6 +1,6 @@
 package com.lemon.wanandroid.bean
 
-data class PublicArticleData(
+data class PublicArticleDataBean(
     var curPage: Int,
     var datas: List<Data>,
     var offset: Int,

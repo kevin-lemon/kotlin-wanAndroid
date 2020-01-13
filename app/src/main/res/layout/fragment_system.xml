@@ -3,12 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <Button
-        android:id="@+id/btn"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    >
+    <androidx.recyclerview.widget.RecyclerView
+        android:background="@color/colorWhite"
+        android:id="@+id/system_menu_view"
+        android:layout_width="@dimen/dp100"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp100"/>
+        />
+    <com.lemon.wanandroid.view.flowlayout.FlowLayout
+        android:id="@+id/system_flowLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/system_menu_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

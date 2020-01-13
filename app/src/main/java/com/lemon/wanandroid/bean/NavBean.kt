@@ -1,15 +1,12 @@
 package com.lemon.wanandroid.bean
 
-data class Article(
-    var curPage: Int,
-    var datas: List<Data>,
-    var offset: Int,
-    var over: Boolean,
-    var pageCount: Int,
-    var size: Int,
-    var total: Int
-){
-    data class Data(
+
+data class NavBean(
+    var articles: List<NavArticle>,
+    var cid: Int,
+    var name: String
+) {
+    data class NavArticle(
         var apkLink: String,
         var audit: Int,
         var author: String,

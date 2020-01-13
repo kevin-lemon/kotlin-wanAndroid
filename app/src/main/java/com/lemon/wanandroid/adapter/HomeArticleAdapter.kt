@@ -5,13 +5,13 @@ import android.text.TextUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.lemon.wanandroid.R
-import com.lemon.wanandroid.bean.Article
+import com.lemon.wanandroid.bean.ArticleBean
 import com.lemon.wanandroid.utils.format
 
 class HomeArticleAdapter(layoutResId: Int) :
-    BaseQuickAdapter<Article.Data, BaseViewHolder>(layoutResId) {
+    BaseQuickAdapter<ArticleBean.Data, BaseViewHolder>(layoutResId) {
 
-    override fun convert(helper: BaseViewHolder, item: Article.Data) {
+    override fun convert(helper: BaseViewHolder, item: ArticleBean.Data) {
         val type = item?.type
         val isRefresh = item?.fresh
         var tip: String? = null

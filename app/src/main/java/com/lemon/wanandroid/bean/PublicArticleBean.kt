@@ -1,6 +1,6 @@
 package com.lemon.wanandroid.bean
 
-data class PublicArticle(
+data class PublicArticleBean(
     var children: List<Any>,
     var courseId: Int,
     var id: Int,

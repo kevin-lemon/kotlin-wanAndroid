@@ -9,6 +9,8 @@ import com.lemon.wanandroid.ui.articlepage.ArticlePageViewModel
 import com.lemon.wanandroid.ui.home.HomeViewModel
 import com.lemon.wanandroid.ui.project.ProjectViewModel
 import com.lemon.wanandroid.ui.projectpage.ProjectPageViewModel
+import com.lemon.wanandroid.ui.system.SystemViewModel
+import com.lemon.wanandroid.ui.systemdetails.SystemDetailsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -39,6 +41,16 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ArticlePageViewModel::class)
     abstract fun bindArticlePageViewModel(articleListViewModel: ArticlePageViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SystemViewModel::class)
+    abstract fun bindSystemViewModel(systemViewModel: SystemViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SystemDetailsViewModel::class)
+    abstract fun bindSystemDetailsViewModel(systemDetailsViewModel: SystemDetailsViewModel): ViewModel
     @Binds
     abstract fun bindViewModelFactory(viewModelFactory: CustomViewModelFactory): ViewModelProvider.Factory
 }
