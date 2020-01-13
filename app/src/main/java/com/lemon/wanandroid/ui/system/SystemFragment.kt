@@ -1,11 +1,13 @@
 package com.lemon.wanandroid.ui.system
+
+import android.graphics.Color
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
-import androidx.navigation.NavHostController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +18,9 @@ import com.lemon.wanandroid.bean.SystemMenuBean
 import com.lemon.wanandroid.view.flowlayout.FlowAdapter
 import com.lemon.wanandroid.view.flowlayout.FlowLayout
 import kotlinx.android.synthetic.main.fragment_system.*
+import java.util.*
 import javax.inject.Inject
+
 
 class SystemFragment : BaseFragment(){
 
@@ -52,6 +56,11 @@ class SystemFragment : BaseFragment(){
                     parent, false
                 ) as TextView
                 t as SystemMenuBean.Children
+                val random = Random()
+                val r: Int = 30 + random.nextInt(200)
+                val g: Int = 30 + random.nextInt(200)
+                val b: Int = 30 + random.nextInt(200)
+                tv.setTextColor(Color.rgb(r, g, b))
                 tv.text = t.name
                 return tv
             }
