@@ -7,7 +7,7 @@ kotlin-wanAndroid是一款使用kotlin语言，结合dagger2、Livedata、ViewMo
 [玩android开放API](http://blog.csdn.net/guodongxiaren)
 
 ## 项目截图
-| ![](screenshot/01.jpg) | ![](screenshot/启动页.jpg) | ![](screenshot/首页.jpg) | ![](screenshot/项目.jpg) |
+| ![](screenshot/启动页.jpg) | ![](screenshot/首页.jpg) | ![](screenshot/项目.jpg) |
 | --- | --- | --- |
-| ![](screenshot/体系.jpg) | ![](screenshot/公众号.jpg) | ![](screenshot/07.jpg) | ![](screenshot/导航.jpg) |
+| ![](screenshot/体系.jpg) | ![](screenshot/公众号.jpg) | ![](screenshot/导航.jpg) |
 
