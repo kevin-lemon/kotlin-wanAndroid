@@ -11,3 +11,5 @@ kotlin-wanAndroid是一款使用kotlin语言，结合dagger2、Livedata、ViewMo
 | --- | --- | --- |
 | ![](screenshot/体系.jpg) | ![](screenshot/公众号.jpg) | ![](screenshot/导航.jpg) |
 
+## APK下载
+[APK](https://raw.githubusercontent.com/kevin-lemon/kotlin-wanAndroid/master/app/release/app-release.apk)
