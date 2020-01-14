@@ -16,7 +16,7 @@
         android:id="@+id/systemDetailsFragment"
         android:name="com.lemon.wanandroid.ui.systemdetails.SystemDetailsFragment"
         android:label="SystemDetailsFragment">
-        <argument android:name="cid" android:defaultValue="0" app:argType="integer"/>
+        <argument android:name="id" android:defaultValue="0" app:argType="integer"/>
         <action
             android:id="@+id/action_to_detailsWebFragment"
             app:destination="@id/detailsWebFragment" />

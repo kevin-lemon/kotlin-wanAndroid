@@ -48,35 +48,10 @@ class DetailsWebFragment : BaseFragment() {
         mSettings.javaScriptEnabled = true
         mSettings.setSupportZoom(true)
         mSettings.builtInZoomControls = true
-        //不显示缩放按钮
-        //不显示缩放按钮
         mSettings.displayZoomControls = false
-        //设置自适应屏幕，两者合用
-        //将图片调整到适合WebView的大小
-        //设置自适应屏幕，两者合用
-        //将图片调整到适合WebView的大小
         mSettings.useWideViewPort = true
-        //缩放至屏幕的大小
-        //缩放至屏幕的大小
         mSettings.loadWithOverviewMode = true
-        //自适应屏幕
-        //自适应屏幕
         mSettings.layoutAlgorithm = WebSettings.LayoutAlgorithm.SINGLE_COLUMN
-    }
-
-    override fun onResume() {
-        mAgentWeb.webLifeCycle.onResume()
-        super.onResume()
-    }
-
-    override fun onPause() {
-        mAgentWeb.webLifeCycle.onPause()
-        super.onPause()
-    }
-
-    override fun onDestroyView() {
-        mAgentWeb.webLifeCycle.onDestroy()
-        super.onDestroyView()
     }
 
     override fun initData() {

@@ -44,7 +44,6 @@ fun BottomNavigationView.setupWithNavController(
     val selectedNavController = MutableLiveData<NavController>()
 
     var firstFragmentGraphId = 0
-
     // First create a NavHostFragment for each NavGraph ID
     navGraphIds.forEachIndexed { index, navGraphId ->
         val fragmentTag = getFragmentTag(index)

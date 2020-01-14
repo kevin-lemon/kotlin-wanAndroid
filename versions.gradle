@@ -44,6 +44,7 @@ versions.retrofit = "2.6.0"
 versions.brvah ="2.9.50"
 versions.smartrefresh = "1.1.0-andx-11"
 versions.agentweb = "4.1.2"
+versions.lottie = "3.3.1"
 ext.versions = versions
 
 deps.brvah = "com.github.CymChad:BaseRecyclerViewAdapterHelper:$versions.brvah"
@@ -52,6 +53,7 @@ deps.okhttp3 = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp3"
 deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
 deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
 deps.agentweb = "com.just.agentweb:agentweb:$versions.agentweb"
+deps.lottie = "com.airbnb.android:lottie:$versions.lottie"
 ext.deps = deps
 
 def lifecycle = [:]

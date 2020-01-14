@@ -1,6 +1,8 @@
 package com.lemon.wanandroid.ui.main
 
 import android.os.Bundle
+import android.view.KeyEvent
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
@@ -10,6 +12,7 @@ import com.lemon.wanandroid.R
 import com.lemon.wanandroid.setupWithNavController
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.system.exitProcess
 
 
 /**
@@ -45,6 +48,14 @@ class MainActivity : BaseActivity() {
         )
 
         currentNavController = controller
+    }
+
+    override fun onBackPressed() {
+        if (currentNavController?.value?.currentDestination?.label?.equals("homeFragment") == true){
+            moveTaskToBack(true)
+            return
+        }
+        super.onBackPressed()
     }
 
     override fun onSupportNavigateUp(): Boolean {

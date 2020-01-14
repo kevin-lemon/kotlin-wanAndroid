@@ -22,20 +22,19 @@ class SystemDetailsViewModel @Inject constructor(repository: SystemRepository)  
     var resourceSystem: LiveData<Resource<SystemDataBean>> = Transformations
         .switchMap(pageNum) { pageNum ->
             pageNum?.let {
-                repository.getSystemData(it,cid )
+                repository.getSystemData(it,cid)
             }
         }
 
     open fun lazyInit(cid: Int) {
         this.cid = cid
         resourceSystem.observeForever(resourceSystemObserver)
-        _pageNum.postValue(1)
+        _pageNum.postValue(0)
     }
 
-    //false为加载更多，true为刷新获取第一页
     fun getSystemDetails(isRefresh: Boolean) {
         if (isRefresh) {
-            _pageNum.value = 1
+            _pageNum.value = 0
             resourceSystem.observeForever(resourceSystemObserver)
         } else {
             if (isHaveMoreSystem) {
@@ -51,7 +50,7 @@ class SystemDetailsViewModel @Inject constructor(repository: SystemRepository)  
         when (resource.status) {
             Status.SUCCESS -> {
                 resource.data?.let { data ->
-                    isHaveMoreSystem = data.curPage < data.pageCount
+                    isHaveMoreSystem = data.curPage < data.pageCount-1
                     when (data.curPage) {
                         1 -> {
                             if (systems.value == null) {

@@ -14,16 +14,17 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.splash.SplashActivity"
-            android:launchMode="singleTop" />
-        <activity
-            android:name=".ui.main.MainActivity"
+            android:launchMode="singleTop"
             android:theme="@style/FullScreenStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:theme="@style/FullScreenStyle">
         </activity>
         <activity
             android:name=".ui.detailsweb.DetailsWebFragment"
