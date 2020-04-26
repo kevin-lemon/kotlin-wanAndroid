@@ -26,9 +26,6 @@
             android:name=".ui.main.MainActivity"
             android:theme="@style/FullScreenStyle">
         </activity>
-        <activity
-            android:name=".ui.detailsweb.DetailsWebFragment"
-            android:theme="@style/FullScreenStyle"/>
     </application>
 
 </manifest>
